@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>N1CCK.CallsignToolkit</PackageId>
+    <Title>N1CCK.CallsignToolkit</Title>
+    <Authors>n1cck</Authors>
+    <Description>A collection of utilities for working with Amateur Radio callsigns </Description>
+    <RepositoryUrl>https://github.com/nkbooth/CallsignToolkit</RepositoryUrl>
+    <PackageTags>ham radio, amateur radio, callsign, callsign toolkit</PackageTags>
+	  <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Version>0.0.0.1</Version>
+    <FileVersion>0.0.0.1</FileVersion>
+    <AssemblyVersion>0.0.0.1</AssemblyVersion>
+    <AssemblyFileVersion>0.0.0.1</AssemblyFileVersion>
+    <PackageVersion>0.0.0.1</PackageVersion>
+    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+</Project>
