@@ -1,7 +1,7 @@
 # The N1CCK Callsign Toolkit
-This is a collection of tools for working with amateur radio callsigns. I needed a toolkit, so I made one. It's not perfect, but it's a start.
+This is a collection of tools for working with amateur radio callsigns. I needed a toolkit, so I made one. The design theory is absolutely guided by the KISS (keep it simple, stupid) method - if there is a choice between "simple" and "fancy", I will choose simple.
 
-## Callsign Validation
+## Callsign Validators
 There are many things about a callsign that we may wish to validate. This toolkit will validate format, but not check for the existence of the callsign in the FCC database.
 
 ### Callsign Format
@@ -18,3 +18,33 @@ The `IsValidGLAARGVENumber` function takes a string and returns a boolean indica
 
 ### Get GLAARG VE Number From String
 The `GetGLAARGVENumberFromString` function takes a string and returns the first potential GLAARG VE number it finds.  If no potential GLAARG VE number is found, it returns an empty string.
+
+## Callbook Lookups
+Tools to use various callbook lookup services.
+
+### Hamcall.dev
+Hamcall is a free (no auth needed) callbook lookup service. It currently  supports only US licenses.
+#### GetCallInfo
+Accepts callsign as a string; if found, returns a JSON string with the following fields:
+- callsign
+- name (full name)
+- first_name
+- mi
+- last_name
+- class
+- address (street address, if available)
+- city
+- state
+- zip
+- po_box (integer; if a PO Box address is used, address will be blank.)
+- grant
+- effective
+- expiration
+- frn
+- file_number
+- last_lotw (date of last LOTW upload)
+- license_key
+- dmr_id [int]
+
+### QRZ XML Lookup
+Requires QRZ_USERNAME and QRZ_PASSWORD environment variables to be set.  If not set, the function will return an error.

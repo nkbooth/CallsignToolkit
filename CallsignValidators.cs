@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace callsignToolkit;
+namespace N1CCK.CallsignValidators;
 public static class CallsignValidation
 {
     private static string[] callFilterRules = new string[] {
