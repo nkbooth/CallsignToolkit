@@ -13,16 +13,20 @@
     <PackageTags>ham radio, amateur radio, callsign, callsign toolkit</PackageTags>
 	  <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>0.0.0.1</Version>
-    <FileVersion>0.0.0.1</FileVersion>
-    <AssemblyVersion>0.0.0.1</AssemblyVersion>
-    <AssemblyFileVersion>0.0.0.1</AssemblyFileVersion>
-    <PackageVersion>0.0.0.1</PackageVersion>
-    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+    <Version>0.0.0.4</Version>
+    <FileVersion>0.0.0.4</FileVersion>
+    <AssemblyVersion>0.0.0.4</AssemblyVersion>
+    <AssemblyFileVersion>0.0.0.4</AssemblyFileVersion>
+    <PackageVersion>0.0.0.4</PackageVersion>
+    <PackageReleaseNotes>Adds QRZ XML Lookup object</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
 
 </Project>

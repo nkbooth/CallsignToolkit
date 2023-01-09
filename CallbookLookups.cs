@@ -1,7 +1,6 @@
-using System.Text.Json;
+using Newtonsoft.Json;
 using N1CCK.CallsignValidators;
 using System.Xml.Linq;
-using System;
 
 namespace N1CCK.CallbookLookups;
 
@@ -34,32 +33,34 @@ public class QRZXML
     {
         get
         {
-            if (string.IsNullOrEmpty(this.sessionKey))
+            if (string.IsNullOrEmpty(sessionKey))
             {
-                this.setSessionKey();
-                return this.sessionKey;
+                setSessionKey();
+                return sessionKey;
             }
             else
             {
-                return this.sessionKey;
+                return sessionKey;
             }
         }
     }
-    private string sessionKey = string.Empty;
+    private string sessionKey = new String(string.Empty);
+    
     private void setSessionKey()
     {
-        string QRZUsername = Environment.GetEnvironmentVariable("QRZ_USERNAME");
-        string QRZPassword = Environment.GetEnvironmentVariable("QRZ_PASSWORD");
+        string? QRZUsername = Environment.GetEnvironmentVariable("QRZ_USERNAME");
+        string? QRZPassword = Environment.GetEnvironmentVariable("QRZ_PASSWORD");
         HttpResponseMessage response = new HttpResponseMessage();
 
         try
         {
             var client = new HttpClient();
-            response = client.GetAsync($"https://xmldata.qrz.com/xml/current/?username={QRZUsername};password={QRZPassword}").Result;
+            string link = string.Format("https://xmldata.qrz.com/xml/current/?username={0}&password={1}", QRZUsername, QRZPassword);
+            response = client.GetAsync(link).Result;
         }
         catch (Exception e)
         {
-            throw new Exception("QRZ XML API Error: " + e.Message);
+            throw new Exception("Error setting session key: " + e.Message);
         }
 
         if (response.IsSuccessStatusCode)
@@ -68,26 +69,27 @@ public class QRZXML
             {
                 string? content = response.Content.ReadAsStringAsync().Result;
                 var doc = XDocument.Parse(content);
-                if (doc.Descendants("Error").Any())
+
+                XElement? error = doc.DescendantNodes().OfType<XElement>().FirstOrDefault(x => x.Name.LocalName == "Error");
+                if (error != null)
                 {
-                    throw new Exception("QRZ XML API Error: " + doc.Descendants("Error").FirstOrDefault().Value);
+                    throw new Exception(error.Value);
                 }
                 else
                 {
-                    var sessionKey = doc.Descendants("Session").FirstOrDefault().Value;
-                    this.sessionKey = sessionKey;
+                    XElement? key = doc.DescendantNodes().OfType<XElement>().FirstOrDefault(x => x.Name.LocalName == "Key");
+                    this.sessionKey = key.Value;
                 }
             }
             catch (Exception e)
             {
-                throw new Exception("QRZ XML API Error: " + e.Message);
+                throw new Exception("Error setting session key: " + e.Message);
             }
         }
     }
 
     public string GetCallInfo(string callsign)
     {
-        // return JSON formatted string of call info
         string results = string.Empty;
 
         var client = new HttpClient();
@@ -98,25 +100,31 @@ public class QRZXML
         }
         catch (Exception ex)
         {
-            throw new Exception("QRZ XML API Error: " + ex.Message);
+            throw new Exception("QRZ XML API Error getting call data: " + ex.Message);
         }
 
         if (response.IsSuccessStatusCode)
         {
             string? content = response.Content.ReadAsStringAsync().Result;
             var doc = XDocument.Parse(content);
-            if (doc.Descendants("Error").FirstOrDefault().ToString() == "Session expired")
+
+            var errors = doc.DescendantNodes().OfType<XElement>().FirstOrDefault(x => x.Name.LocalName == "Error");
+            
+            if (errors != null)
             {
-                this.setSessionKey();
-                return this.GetCallInfo(callsign);
-            }
-            else if (doc.Descendants("Error").Any())
-            {
-                throw new Exception("QRZ XML API Error: " + doc.Descendants("Error").FirstOrDefault().Value);
+                if (doc.DescendantNodes().OfType<XElement>().FirstOrDefault(x => x.Name.LocalName == "Error").Value == "Session expired")
+                {
+                    this.setSessionKey();
+                    return this.GetCallInfo(callsign);
+                }
+                else
+                {
+                    throw new Exception("QRZ XML API Error: " + doc.DescendantNodes().OfType<XElement>().FirstOrDefault(x => x.Name.LocalName == "Error").Value);
+                }
             }
             else
             {
-                results = JsonSerializer.Serialize(doc.Descendants("Callsign").FirstOrDefault());
+                results = JsonConvert.SerializeXNode(doc.DescendantNodes().OfType<XElement>().FirstOrDefault(x => x.Name.LocalName == "Callsign"));
             }
         }
         else

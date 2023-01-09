@@ -24,7 +24,7 @@ Tools to use various callbook lookup services.
 
 ### Hamcall.dev
 Hamcall is a free (no auth needed) callbook lookup service. It currently  supports only US licenses.
-#### GetCallInfo
+#### GetCallInfo (static)
 Accepts callsign as a string; if found, returns a JSON string with the following fields:
 - callsign
 - name (full name)
@@ -47,4 +47,5 @@ Accepts callsign as a string; if found, returns a JSON string with the following
 - dmr_id [int]
 
 ### QRZ XML Lookup
-Requires QRZ_USERNAME and QRZ_PASSWORD environment variables to be set.  If not set, the function will return an error.
+Will return JSON-formatted string of the QRZ XML API callsign data response.  
+Requires QRZ_USERNAME and QRZ_PASSWORD environment variables to be set.
