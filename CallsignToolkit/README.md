@@ -5,7 +5,7 @@
 **Option 1**:
 ```csharp
 using CallsignToolkit;
-HamCallLookup lookup = new("n1cck");
+HamCallDevLookup lookup = new("w1aw");
 lookup.PerformLookup();
 Console.WriteLine(lookup.Serialize());
 ```
@@ -13,9 +13,51 @@ Console.WriteLine(lookup.Serialize());
 **Option 2**:
 ```csharp
 using CallsignToolkit;
-HamCallLookup lookup = new();
-lookup.PerformLookup("n1cck");
+HamCallDevLookup lookup = new();
+lookup.PerformLookup("w1aw");
 Console.WriteLine(lookup.Serialize());
+```
+
+_Example output_:
+```json
+{
+  "License": {
+    "DMRID": [
+      3109478,
+      310938
+    ],
+    "FRN": 4511143,
+    "FileNumber": 9324023,
+    "LicenseKey": 780866,
+    "GrantDate": "2020-12-08T00:00:00",
+    "EffectiveDate": "2020-12-08T00:00:00",
+    "ExpirationDate": "2031-02-26T00:00:00",
+    "Callsign": "w1aw",
+    "LicenseClass": ""
+  },
+  "AmateurName": {
+    "FullName": "ARRL HQ OPERATORS CLUB",
+    "FirstName": "ARRL HQ OPERATORS CLUB",
+    "MiddleInitial": "",
+    "LastName": null,
+    "FullNameReverse": ""
+  },
+  "QSLMethods": {
+    "LastLOTWUpload": "0001-01-01T00:00:00",
+    "QSLManager": "",
+    "UseEQSL": false,
+    "UseLOTW": false,
+    "UsePaperQSL": false
+  },
+  "Address": {
+    "Address1": "225 MAIN ST",
+    "Address2": "",
+    "POBoxNumber": "",
+    "City": "NEWINGTON",
+    "State": "CT",
+    "PostalCode": "06111"
+  }
+}
 ```
 
 ## Base Class
