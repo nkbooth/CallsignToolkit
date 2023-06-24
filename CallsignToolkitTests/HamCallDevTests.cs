@@ -74,6 +74,7 @@ namespace CallsignToolkitTests
             Assert.True(lookup.AmateurName.FullName == "Nicholas K. Booth");
 
             await lookup.PerformLookup("w1aw");
+            string tempJSON = lookup.Serialize();
             Assert.True(lookup.AmateurName.FirstName == "ARRL HQ OPERATORS CLUB");
             Assert.True(lookup.License.Callsign.ToUpper() == "W1AW");
         }
