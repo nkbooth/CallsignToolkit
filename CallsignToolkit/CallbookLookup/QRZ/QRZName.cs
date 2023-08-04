@@ -5,18 +5,36 @@ namespace CallsignToolkit.CallbookLookup.QRZ
     public class QRZName : Name
     {
         public string Nickname { get => nickname ?? string.Empty; set => nickname = value; }
-        public new string FirstName { get => firstName ?? string.Empty; set => firstName = value; }
-        public new string LastName { get => lastName ?? string.Empty; set => lastName = value; }
+        public override string FirstName 
+        { 
+            get
+            {
+                if(string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName))
+                    return lastName;
+                else 
+                    return firstName ?? string.Empty;
+            }
+            set => firstName = value; }
+        public override string LastName 
+        { 
+            get
+            {
+                if (string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName))
+                    return string.Empty;
+                else
+                    return lastName;
+            }
+            set => lastName = value; }
 
-        public new string FullName
+        public override string FullName
         {
             get
             {
-                if (!string.IsNullOrEmpty(fullName)) 
+                if (!string.IsNullOrEmpty(fullName))
                 {
                     return fullName;
                 }
-                else if (!string.IsNullOrEmpty(firstName) && string.IsNullOrEmpty(nickname) && string.IsNullOrEmpty(lastName)) 
+                else if (!string.IsNullOrEmpty(firstName) && string.IsNullOrEmpty(nickname) && string.IsNullOrEmpty(lastName))
                 {
                     return firstName;
                 }
@@ -24,9 +42,13 @@ namespace CallsignToolkit.CallbookLookup.QRZ
                 {
                     return $"{firstName} \"{nickname}\" {lastName}";
                 }
-                else if (!string.IsNullOrEmpty(firstName) && string.IsNullOrEmpty(nickname) && !string.IsNullOrEmpty(lastName))
+                else if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(nickname) && !string.IsNullOrEmpty(middleInitial) && !string.IsNullOrEmpty(lastName))
                 {
-                    return $"{firstName} {lastName}";
+                    return $"{firstName} {middleInitial} \"{nickname}\" {lastName}";
+                }
+                else if (!string.IsNullOrEmpty(firstName) && string.IsNullOrEmpty(nickname) && !string.IsNullOrEmpty(middleInitial) && !string.IsNullOrEmpty(lastName))
+                {
+                    return $"{firstName} {middleInitial} {lastName}";
                 }
                 else if (string.IsNullOrEmpty(firstName) && string.IsNullOrEmpty(nickname) && !string.IsNullOrEmpty(lastName))
                 {
@@ -37,9 +59,6 @@ namespace CallsignToolkit.CallbookLookup.QRZ
             }
         }
 
-        private string? firstName;
-        private string? lastName;
         private string? nickname;
-        private string? fullName;
     }
 }

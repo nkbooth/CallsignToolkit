@@ -9,7 +9,6 @@ namespace CallsignToolkit.CallbookLookup.HamCallDev
     public class HamCallDevLicense : License
     {
         public List<int> DMRID = new List<int>();
-
         public int FRN;
         public int FileNumber;
         public int LicenseKey;

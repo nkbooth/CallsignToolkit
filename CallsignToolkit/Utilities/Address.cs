@@ -3,8 +3,9 @@ using System.Text;
 
 namespace CallsignToolkit.Utilities
 {
-    public class Address
+    public class Address : IDisposable
     {
+        [AddressOrderAttribute(10)]
         public string Address1
         {
             get
@@ -27,19 +28,25 @@ namespace CallsignToolkit.Utilities
             }
             set { address1 = value; }
         }
+        [AddressOrderAttribute(20)]
         public string Address2 { get { return address2 ?? string.Empty; } set { address2 = value; } }
+        [AddressOrderAttribute(30)]
         public string POBoxNumber { get { return poBoxNumber ?? string.Empty; } set { poBoxNumber = value ?? string.Empty; } }
+        [AddressOrderAttribute(40)]
         public string City { get { return city ?? string.Empty; } set { city = value; } }
+        [AddressOrderAttribute(50)]
         public string State { get { return state ?? string.Empty; } set { state = value; } }
+        [AddressOrderAttribute(60)]
         public string PostalCode { get { return postalCode ?? string.Empty; } set { postalCode = value; } }
 
 
-        private string? address1;
-        private string? address2;
-        private string? poBoxNumber;
-        private string? city;
-        private string? state;
-        private string? postalCode;
+        protected string? address1;
+        protected string? address2;
+        protected string? poBoxNumber;
+        protected string? city;
+        protected string? state;
+        protected string? postalCode;
+        private bool disposedValue;
 
         public Address() { }
         public Address(string addr1, string addr2, string city, string state, string zipCode)
@@ -67,61 +74,47 @@ namespace CallsignToolkit.Utilities
             this.PostalCode = zipCode;
         }
 
-        public virtual async Task<LatLong> GetCoordinates()
+        public static Address SanitizePostCode(Address addr)
         {
-            RestRequest request = new RestRequest("https://geocode.maps.co/search", Method.Get);
-            string query = encodeQueryString();
-            
-            request.AddParameter("q", query, false);
-            request.AddOrUpdateHeader("Content-Type", "application/json");
-            request.AddOrUpdateHeader("Application", "n1cck-toolkit");
-
-            var response = await new RestClient().ExecuteAsync(request);
-            if (response.IsSuccessful && response.Content != null)
+            if (!string.IsNullOrEmpty(addr.postalCode))
             {
-                var result = response.Content;
-                var json = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(result);
-                
-                if (json != null)
+                addr.postalCode.Replace("-", "");
+                if (addr.postalCode.All(c => c >= '0' && c <= '9'))
                 {
-                    var lat = json[0]["lat"];
-                    var lng = json[0]["lon"];
-
-                    return new LatLong(lat.ToString(), lng.ToString());
+                    if(addr.postalCode.Length > 5)
+                        addr.postalCode = addr.postalCode.Insert(5, "-");
                 }
             }
-            return new LatLong();
+            return addr;
+        }
+        
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    
+                }
+                disposedValue = true;
+            }
         }
 
-        internal virtual string encodeQueryString()
+        public void Dispose()
         {
-            StringBuilder sb = new StringBuilder();
-            if(!string.IsNullOrEmpty(this.Address1))
-            {
-                sb.Append('+');
-                sb.Append(this.Address1);
-            }
-            if(!string.IsNullOrEmpty(this.Address2))
-            {
-                sb.Append('+');
-                sb.Append(this.Address2);
-            }
-            if (!string.IsNullOrEmpty(this.City))
-            {
-                sb.Append('+');
-                sb.Append(this.City);
-            }
-            if (!string.IsNullOrEmpty(this.State))
-            {
-                sb.Append('+');
-                sb.Append(this.State);
-            }
-            if (!string.IsNullOrEmpty(this.PostalCode))
-            {
-                sb.Append('+');
-                sb.Append(this.PostalCode);
-            }
-            return sb.ToString();
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
+    }
+
+    [AttributeUsage(AttributeTargets.Property, Inherited = true, AllowMultiple = false)]
+    public class AddressOrderAttribute : Attribute
+    {
+        public AddressOrderAttribute(int order)
+        {
+            this.Order = order;
+        }
+        public int Order { get; set; }
     }
 }

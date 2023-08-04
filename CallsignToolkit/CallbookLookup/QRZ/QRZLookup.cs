@@ -3,38 +3,81 @@ using RestSharp;
 using CallsignToolkit.Utilities;
 using CallsignToolkit.Exceptions;
 using static System.Net.Mime.MediaTypeNames;
+using Microsoft.VisualBasic;
 
 namespace CallsignToolkit.CallbookLookup.QRZ
 {
     public class QRZLookup : BaseLookup, ICallbook
     {
-        public new QRZName? AmateurName;
+        [ResetOnClear(true)]
+        public override Name AmateurName
+        {
+            get
+            {
+                return qrzName;
+            }
+            set
+            {
+                qrzName = (QRZName)value;
+            }
+        }
+        private QRZName qrzName = new();
 
         #region Callsigns
-        public new QRZLicense License = new QRZLicense();
+        public override License License 
+        { 
+            get
+            {
+                return qrzLicense;
+            }
+            set
+            {
+                qrzLicense = (QRZLicense)value;
+            }
+        }
+        private QRZLicense qrzLicense = new();
+
+        [ResetOnClear(true)]
         public License? PreviousCallsign;
+        [ResetOnClear(true)]
         public List<License>? Aliases;
         #endregion
 
         #region Locators
-        public new QRZAddress? Address;
+        [ResetOnClear(true)]
+        public override Address? Address
+        {
+            get
+            {
+                return qrzAddress;
+            }
+            set
+            {
+                qrzAddress = (QRZAddress)value;
+            }
+        }
+        private QRZAddress qrzAddress = new();
         // public TimeZoneInfo? TimeZone = new();
         #endregion
 
         #region QSL Details
+        [ResetOnClear(true)]
         public QSLMethods? QSLMethods;
         #endregion
 
         #region Misc
+        [ResetOnClear(true)]
         public Uri? ImageURL;
         #endregion
 
         #region API Details
         private string? username;
         private string? password;
-        private string sessionKey = string.Empty;
+        private string? sessionKey = string.Empty;
         RestClient api = new RestClient(new RestClientOptions("https://xmldata.qrz.com/xml/1.31"));
         #endregion
+
+        private bool disposedValue;
 
         #region Constructors
         public QRZLookup()
@@ -72,7 +115,7 @@ namespace CallsignToolkit.CallbookLookup.QRZ
         }
         #endregion
 
-        public async Task PerformLookup()
+        public override async Task PerformLookup()
         {
             if (this.sessionKey == string.Empty)
             {
@@ -121,7 +164,7 @@ namespace CallsignToolkit.CallbookLookup.QRZ
             this.ImageURL = await GetImageURLFromResults(response.Data);
         }
 
-        public async Task PerformLookup(string callsign)
+        public override async Task PerformLookup(string callsign)
         {
             QRZLicense license = new QRZLicense();
             license.Callsign = callsign;
@@ -131,7 +174,7 @@ namespace CallsignToolkit.CallbookLookup.QRZ
 
         internal async Task refreshSessionKey()
         {
-            var request = new RestRequest(string.Format("?username={0};password={1}", this.username, this.password));
+            var request = new RestRequest().AddParameter("username", this.username).AddParameter("password", this.password);
             request.AddHeader("Content-Type", "application/xml");
             
             var response = await api.ExecuteAsync<QRZDatabase>(request, Method.Get);
@@ -140,24 +183,18 @@ namespace CallsignToolkit.CallbookLookup.QRZ
             {
                 throw new Exception("Error accessing QRZ API.", response.ErrorException);
             }
-            else if (response.Data.Session.SubExp.ToLower() == "non-subscriber")
+            else if (response.Data?.Session.SubExp.ToLower() == "non-subscriber")
             {
                 throw new Exception("QRZ XML API: Non-subscriber access denied.");
             }
-            this.sessionKey = response.Data.Session.Key;
+            this.sessionKey = response.Data?.Session.Key;
         }
 
         public async override Task ClearResults()
         {
-            this.AmateurName = null;
-            this.License = new QRZLicense();
-            this.PreviousCallsign = null;
-            this.Aliases = null;
-            this.Address = null;
-            this.QSLMethods = null;
-            this.ImageURL = null;
             api = new RestClient(new RestClientOptions("https://xmldata.qrz.com/xml/1.31"));
-            await Task.CompletedTask;
+            this.License = new QRZLicense();
+            await base.ClearResults();
         }
 
         private static Task<QRZName> GetAmateurNameFromResults(QRZDatabase results)
@@ -168,6 +205,9 @@ namespace CallsignToolkit.CallbookLookup.QRZ
                 LastName = results.Callsign.Name,
                 Nickname = results.Callsign.Nickname
             };
+
+            var parsedname = Name.SeperateMiddleInitialFromFirstName(qRZName);
+            qRZName = (QRZName)parsedname;
             
             return Task.FromResult<QRZName>(qRZName);
         }
@@ -242,6 +282,7 @@ namespace CallsignToolkit.CallbookLookup.QRZ
                 address.WebAddress = webaddress;
             }
 
+            address = (QRZAddress)Address.SanitizePostCode(address);
             return Task.FromResult(address);
         }
 
@@ -262,6 +303,33 @@ namespace CallsignToolkit.CallbookLookup.QRZ
         {
             Uri image = results.Callsign.Image == null ? new Uri("about:blank") : new Uri(results.Callsign.Image);
             return Task.FromResult(image);
+        }
+
+        private static Task<QRZLocators> GetLocatorsFromResults(QRZDatabase results)
+        {
+            QRZLocators locators = new()
+            {
+                FIPSCode = results.Callsign.Fips,
+                IOTA = results.Callsign.Iota,
+                TeleAreaCode = results.Callsign.AreaCode,
+                GeoCoordinates = new LatLong(results.Callsign.Lat, results.Callsign.Lon),
+                GridSquare = results.Callsign.Grid
+            };
+            int.TryParse(results.Callsign.Dxcc, out int dxccNumber);
+            locators.DXInformation = (DXInfomration)dxccNumber;
+
+            return Task.FromResult(locators);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                }
+                disposedValue = true;
+            }
         }
     }
 }

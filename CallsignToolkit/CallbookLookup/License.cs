@@ -9,13 +9,13 @@ namespace CallsignToolkit.CallbookLookup
 {
     public class License
     {
-        public string? Callsign
+        public string Callsign
         {
-            get { return callsign; }
+            get { return callsign ?? string.Empty; }
             set { callsign = value; }
         }
         
-        public string LicenseClass
+        public string? LicenseClass
         {
             get 
             { 
@@ -48,6 +48,9 @@ namespace CallsignToolkit.CallbookLookup
                     case "n":
                     case "novice":
                         return "Novice";
+                    case "c":
+                    case "club":
+                        return "Club";
                     
                     default: return licenseClass ?? string.Empty;
                 }
@@ -69,15 +72,15 @@ namespace CallsignToolkit.CallbookLookup
 
         #region constructors
         public License() { }
-        public License (string callsign)
+        public License (string call)
         {
-            this.callsign = callsign;
+            this.callsign = call;
             this.licenseClass = string.Empty;
 
         }
-        public License(string callsign, string licenseClass)
+        public License(string call, string licenseClass)
         {
-            this.callsign = callsign;
+            this.callsign = call;
             this.licenseClass = licenseClass;
             
         }

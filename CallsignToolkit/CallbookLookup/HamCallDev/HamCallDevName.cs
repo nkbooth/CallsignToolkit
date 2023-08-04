@@ -4,17 +4,17 @@ namespace CallsignToolkit.CallbookLookup.HamCallDev
 {
     public class HamCallDevName : Name
     {
-        public new string FullName
+        public override string FullName
         {
             get
             {
-                if (!string.IsNullOrEmpty(fullName) || fullName == "")
+                if (!string.IsNullOrEmpty(fullName))
                 {
                     return fullName;
                 }
                 else if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(MiddleInitial) && !string.IsNullOrEmpty(lastName))
                 {
-                    return $"{FirstName} {MiddleInitial}. {LastName}";
+                    return $"{FirstName} {MiddleInitial} {LastName}";
                 }
                 else if (!string.IsNullOrEmpty(firstName) && string.IsNullOrEmpty(MiddleInitial) && !string.IsNullOrEmpty(lastName))
                 {
@@ -39,13 +39,10 @@ namespace CallsignToolkit.CallbookLookup.HamCallDev
                 }
             }
         }
-        public new string? FirstName { get => firstName; set => firstName = value; }
-        public string MiddleInitial { get => middleInitial ?? string.Empty; set => middleInitial = value; }
-        public new string? LastName { get => lastName; set => lastName = value; }
+        public override string FirstName { get => firstName; set => firstName = value; }
+        // public string MiddleInitial { get => middleInitial; set => middleInitial = value; }
+        public override string LastName { get => lastName; set => lastName = value; }
 
-        private string? fullName;
-        private string? firstName;
-        private string? middleInitial;
-        private string? lastName;
+        // protected string middleInitial = string.Empty;
     }
 }

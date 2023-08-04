@@ -179,5 +179,8 @@ namespace CallsignToolkit.CallbookLookup.QRZ
 
         [XmlElement(ElementName = "image", Namespace = "http://xmldata.qrz.com")]
         public string Image { get; set; }
+
+        [XmlElement(ElementName = "iota", Namespace = "http://xmldata.qrz.com")]
+        public string Iota { get; set; }
     }
 }

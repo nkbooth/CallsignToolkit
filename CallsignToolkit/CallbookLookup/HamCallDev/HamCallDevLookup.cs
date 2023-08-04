@@ -7,9 +7,22 @@ namespace CallsignToolkit.CallbookLookup.HamCallDev
 {
     public class HamCallDevLookup : BaseLookup, ICallbook
     {
-        public new HamCallDevLicense License = new HamCallDevLicense();
-        public new HamCallDevName? AmateurName;
+        public override License License
+        {
+            get { return hamCallDevLicense; }
+            set { hamCallDevLicense = (HamCallDevLicense)value; }
+        }
+        private HamCallDevLicense hamCallDevLicense = new();
 
+        [ResetOnClear(true)]
+        public override Name AmateurName
+        {
+            get { return (HamCallDevName)hamCallDevName; }
+            set { hamCallDevName = (HamCallDevName)value; }
+        }
+        private HamCallDevName hamCallDevName = new();
+
+        [ResetOnClear(true)]
         public HamCallDevQSL? QSLMethods;
 
         internal RestClient api = new RestClient("https://hamcall.dev/");
@@ -21,7 +34,7 @@ namespace CallsignToolkit.CallbookLookup.HamCallDev
             this.License = license;
         }
 
-        public async Task PerformLookup()
+        public override async Task PerformLookup()
         {
             if (string.IsNullOrEmpty(this.License.Callsign) || License.Callsign == "")
             {
@@ -31,19 +44,19 @@ namespace CallsignToolkit.CallbookLookup.HamCallDev
             {
                 var results = await api.GetJsonAsync<HamCallDevRawReturn>($"{this.License.Callsign}.json");
                 
-                if (results.callsign == null)
+                if (results.callsign == null || (string.IsNullOrEmpty(results.grant) && string.IsNullOrEmpty(results.effective) && string.IsNullOrEmpty(results.frn)))
                 {
                     throw new CallsignNotFound(this.License.Callsign);
                 }
 
-                this.AmateurName = await GetName(results);
-                this.License = await GetLicense(results);
-                this.Address = await GetAddress(results);
-                this.QSLMethods = await GetQSLMethods(results);
+                this.AmateurName = await GetNameFromResults(results);
+                this.License = await GetLicenseFromResults(results);
+                this.Address = await GetAddressFromResults(results);
+                this.QSLMethods = await GetQSLMethodsFromResults(results);
             }
         }
 
-        public async Task PerformLookup(string callsign)
+        public override async Task PerformLookup(string callsign)
         {
             await this.ClearResults();
             this.License.Callsign = callsign;
@@ -52,15 +65,12 @@ namespace CallsignToolkit.CallbookLookup.HamCallDev
 
         public async override Task ClearResults()
         {
-            License = new HamCallDevLicense();
-            AmateurName = null;
-            QSLMethods = null;
-            Address = null;
             api = new RestClient("https://hamcall.dev/");
-            await Task.CompletedTask;
+            this.License = new HamCallDevLicense();
+            await base.ClearResults();
         }
 
-        private static Task<HamCallDevName> GetName(HamCallDevRawReturn results)
+        private static Task<HamCallDevName> GetNameFromResults(HamCallDevRawReturn results)
         {
             HamCallDevName name = new();
 
@@ -74,16 +84,28 @@ namespace CallsignToolkit.CallbookLookup.HamCallDev
                 name.MiddleInitial = results.mi;
                 name.LastName = results.last_name;
             }
-            return Task.FromResult(name);
+            if(string.IsNullOrEmpty(name.MiddleInitial))
+            {
+                Name tempName = Name.SeperateMiddleInitialFromFirstName(name);
+            }
+            return Task.FromResult((HamCallDevName)name);
         }
 
-        private Task<HamCallDevLicense> GetLicense(HamCallDevRawReturn results)
+        private Task<HamCallDevLicense> GetLicenseFromResults(HamCallDevRawReturn results)
         {
             HamCallDevLicense license = new()
             {
-                Callsign = this.License.Callsign,
-                LicenseClass = results.@class
+                Callsign = this.License.Callsign
             };
+            if (results.@class == "")
+            {
+                license.LicenseClass = "Club";
+            }
+            else
+            {
+                license.LicenseClass = results.@class;
+            }
+            
             DateTime.TryParse(results.grant, out license.GrantDate);
             DateTime.TryParse(results.effective, out license.EffectiveDate);
             DateTime.TryParse(results.expiration, out license.ExpirationDate);
@@ -91,14 +113,17 @@ namespace CallsignToolkit.CallbookLookup.HamCallDev
             int.TryParse(results.file_number, out license.FileNumber);
             int.TryParse(results.license_key, out license.LicenseKey);
 
-            foreach (int dmrID in results.dmr_id)
+            if (results.dmr_id != null)
             {
-                license.DMRID.Add(dmrID);
+                foreach (int dmrID in results.dmr_id)
+                {
+                    license.DMRID.Add(dmrID);
+                }
             }
             return Task.FromResult(license);
         }
 
-        private static Task<Address> GetAddress(HamCallDevRawReturn results) 
+        private static Task<Address> GetAddressFromResults(HamCallDevRawReturn results) 
         {
             Address address = new()
             {
@@ -109,10 +134,11 @@ namespace CallsignToolkit.CallbookLookup.HamCallDev
                 POBoxNumber = results.po_box
             };
 
+            address = Address.SanitizePostCode(address);
             return Task.FromResult(address);
         }
 
-        private static Task<HamCallDevQSL> GetQSLMethods(HamCallDevRawReturn results)
+        private static Task<HamCallDevQSL> GetQSLMethodsFromResults(HamCallDevRawReturn results)
         {
             HamCallDevQSL qSLMethods = new();
             DateTime.TryParse(results.last_lotw, out qSLMethods.LastLOTWUpload);

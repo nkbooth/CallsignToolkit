@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CallsignToolkit.Utilities
+﻿namespace CallsignToolkit.Utilities
 {
     public class Name
     {
-        public string FirstName
+        public virtual string FirstName
         {
             get
             {
@@ -27,7 +21,7 @@ namespace CallsignToolkit.Utilities
 
             }
         }
-        public string LastName
+        public virtual string LastName
         {
             get
             {
@@ -46,7 +40,9 @@ namespace CallsignToolkit.Utilities
             }
         }
 
-        public string FullName
+        public string MiddleInitial { get => middleInitial; set => middleInitial = value; }
+
+        public virtual string FullName
         {
             get
             {
@@ -72,7 +68,7 @@ namespace CallsignToolkit.Utilities
                 }
             }
         }
-        public string FullNameReverse
+        public virtual string FullNameReverse
         {
             get
             {
@@ -88,9 +84,10 @@ namespace CallsignToolkit.Utilities
 
         }
 
-        private string fullName = string.Empty;
-        private string firstName = string.Empty;
-        private string lastName = string.Empty;
+        protected string fullName = string.Empty;
+        protected string firstName = string.Empty;
+        protected string lastName = string.Empty;
+        protected string middleInitial = string.Empty;
 
 
         public Name() { }
@@ -98,6 +95,20 @@ namespace CallsignToolkit.Utilities
         {
             this.FirstName = firstName;
             this.LastName = lastName;
+        }
+
+        public static Name SeperateMiddleInitialFromFirstName(Name startingName)
+        {
+            if (string.IsNullOrEmpty(startingName.MiddleInitial))
+            {
+                string[] firstNameParts = startingName.FirstName.Split(' ');
+                if(firstNameParts.Last().Length == 1)
+                {
+                    startingName.MiddleInitial = firstNameParts.Last();
+                    startingName.FirstName = string.Join(" ", firstNameParts.Take(firstNameParts.Length - 1));
+                }
+            }
+            return startingName;
         }
     }
 }
