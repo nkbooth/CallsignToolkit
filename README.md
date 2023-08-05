@@ -120,7 +120,7 @@ The base helper classes are objects to support serialization and standardization
 #### Provided Methods
 - **Address()** : _constructor_
 - **Address(string address1, string city, string state, string postalCode, string country)** : _constructor_
-- **GetCoordinates()** : _CallsignToolkit.Utilities.LatLong_ - uses the API provided by https://maps.co to convert an address to latitude and longitude.
+- **GetCoordinates()** : _CallsignToolkit.Utilities.LatLong_ - uses the API provided by [maps.co](https://maps.co) to convert an address to latitude and longitude.
 
 ### CallsignToolkit.Utilities.LatLong
 #### Provided Properties
