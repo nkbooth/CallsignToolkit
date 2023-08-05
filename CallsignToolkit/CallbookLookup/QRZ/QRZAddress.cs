@@ -5,17 +5,15 @@ namespace CallsignToolkit.CallbookLookup.QRZ
 {
     public class QRZAddress : Address
     {
-        public string Attention { get { return attention ?? string.Empty; } set { attention = value; } }
-        [AddressOrderAttribute(45)]
-        public string County { get { return county ?? string.Empty; } set { county = value; } }
-        public string Country { get { return country ?? string.Empty; } set { country = value; } }
+        public string Attention { get; set; } = string.Empty;
+
+        [AddressOrder(45)]
+        public string County { get; set; } = string.Empty;
+
+        public string Country { get; set; } = string.Empty;
 
         public MailAddress? EmailAddress;
         public Uri? WebAddress;
-
-        private string? attention;
-        private string? county;
-        private string? country;
 
         public QRZAddress() { }
         public QRZAddress(string addr1, string poBoxNum, string city, string state, string zipCode) : base(addr1, poBoxNum, city, state, zipCode)

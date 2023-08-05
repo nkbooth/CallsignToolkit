@@ -4,22 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using CallsignToolkit.Utilities;
 
 namespace CallsignToolkit.CallbookLookup
 {
     public class License
     {
-        public string Callsign
-        {
-            get => callsign ?? string.Empty;
-            set => callsign = value;
-        }
-        
-        public string? LicenseClass
+        public string Callsign { get; set; } = string.Empty;
+
+        public string LicenseClass
         {
             get 
             { 
-                switch(licenseClass?.ToLower())
+                switch(licenseClass.ToLower())
                 {
                     case "t":
                     case "/kt":
@@ -52,14 +49,13 @@ namespace CallsignToolkit.CallbookLookup
                     case "club":
                         return "Club";
                     
-                    default: return licenseClass ?? string.Empty;
+                    default: return licenseClass;
                 }
             }
             set => licenseClass = value;
         }
 
-        private string? callsign;
-        private string? licenseClass;
+        private string licenseClass = string.Empty;
 
         private static readonly string[] USCallFilterRules = 
         {
@@ -74,13 +70,11 @@ namespace CallsignToolkit.CallbookLookup
         public License() { }
         public License (string call)
         {
-            this.callsign = call;
-            this.licenseClass = string.Empty;
-
+            this.Callsign = call;
         }
         public License(string call, string licenseClass)
         {
-            this.callsign = call;
+            this.Callsign = call;
             this.licenseClass = licenseClass;
             
         }

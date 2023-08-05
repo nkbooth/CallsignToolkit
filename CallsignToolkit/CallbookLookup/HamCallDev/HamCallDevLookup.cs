@@ -83,11 +83,7 @@ namespace CallsignToolkit.CallbookLookup.HamCallDev
                 name.MiddleInitial = results.mi;
                 name.LastName = results.last_name;
             }
-            if(string.IsNullOrEmpty(name.MiddleInitial))
-            {
-                // throw new NotImplementedException("Finishing HamCallDev name return stuff");
-                Name tempName = Name.SeperateMiddleInitialFromFirstName(name);
-            }
+            
             return Task.FromResult(name);
         }
 

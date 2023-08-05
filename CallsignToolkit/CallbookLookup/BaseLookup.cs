@@ -13,10 +13,10 @@ namespace CallsignToolkit.CallbookLookup
         public virtual Name AmateurName { get; set; } = new();
 
         [ResetOnClear()]
-        public virtual Address? Address { get; protected set; } = new();
+        public virtual Address Address { get; protected set; } = new();
 
-        [ResetOnClear()]
-        public virtual Locators? Locators { get; set; }
+        [ResetOnClear()] 
+        public virtual Locators Locators { get; set; } = new();
         
         private readonly RestClient api = new();
         private bool disposedValue;

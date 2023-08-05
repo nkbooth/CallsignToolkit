@@ -2,9 +2,12 @@
 
 namespace CallsignToolkit.CallbookLookup.QRZ
 {
+    // ReSharper disable once InconsistentNaming
     public class QRZName : Name
     {
-        public string Nickname { get => nickname ?? string.Empty; set => nickname = value; }
+        // ReSharper disable once PropertyCanBeMadeInitOnly.Global
+        public string Nickname { get; set; } = string.Empty;
+
         public override string FirstName 
         { 
             get
@@ -12,7 +15,7 @@ namespace CallsignToolkit.CallbookLookup.QRZ
                 if(string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName))
                     return lastName;
                 else 
-                    return firstName ?? string.Empty;
+                    return firstName;
             }
             set => firstName = value; }
         public override string LastName 
@@ -34,31 +37,29 @@ namespace CallsignToolkit.CallbookLookup.QRZ
                 {
                     return fullName;
                 }
-                else if (!string.IsNullOrEmpty(firstName) && string.IsNullOrEmpty(nickname) && string.IsNullOrEmpty(lastName))
+                else switch (string.IsNullOrEmpty(firstName))
                 {
-                    return firstName;
-                }
-                else if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(nickname) && !string.IsNullOrEmpty(lastName))
-                {
-                    return $"{firstName} \"{nickname}\" {lastName}";
-                }
-                else if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(nickname) && !string.IsNullOrEmpty(middleInitial) && !string.IsNullOrEmpty(lastName))
-                {
-                    return $"{firstName} {middleInitial} \"{nickname}\" {lastName}";
-                }
-                else if (!string.IsNullOrEmpty(firstName) && string.IsNullOrEmpty(nickname) && !string.IsNullOrEmpty(middleInitial) && !string.IsNullOrEmpty(lastName))
-                {
-                    return $"{firstName} {middleInitial} {lastName}";
-                }
-                else if (string.IsNullOrEmpty(firstName) && string.IsNullOrEmpty(nickname) && !string.IsNullOrEmpty(lastName))
-                {
-                    return $"{lastName}";
+                    case false when string.IsNullOrEmpty(Nickname) && string.IsNullOrEmpty(lastName):
+                        return firstName;
+                    case false when !string.IsNullOrEmpty(Nickname) && !string.IsNullOrEmpty(lastName):
+                        return $"{firstName} \"{Nickname}\" {lastName}";
+                    case false when !string.IsNullOrEmpty(Nickname) && !string.IsNullOrEmpty(middleInitial) && !string.IsNullOrEmpty(lastName):
+                        return $"{firstName} {middleInitial} \"{Nickname}\" {lastName}";
+                    case false when string.IsNullOrEmpty(Nickname) && !string.IsNullOrEmpty(middleInitial) && !string.IsNullOrEmpty(lastName):
+                        return $"{firstName} {middleInitial} {lastName}";
+                    default:
+                    {
+                        if (string.IsNullOrEmpty(firstName) && string.IsNullOrEmpty(Nickname) && !string.IsNullOrEmpty(lastName))
+                        {
+                            return $"{lastName}";
+                        }
+
+                        break;
+                    }
                 }
 
                 return string.Empty;
             }
         }
-
-        private string? nickname;
     }
 }

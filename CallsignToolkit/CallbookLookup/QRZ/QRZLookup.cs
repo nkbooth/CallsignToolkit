@@ -2,79 +2,66 @@
 using RestSharp;
 using CallsignToolkit.Utilities;
 using CallsignToolkit.Exceptions;
-using static System.Net.Mime.MediaTypeNames;
-using Microsoft.VisualBasic;
+using static System.Environment;
 
 namespace CallsignToolkit.CallbookLookup.QRZ
 {
-    public class QRZLookup : BaseLookup, ICallbook
+    // ReSharper disable once InconsistentNaming
+    public class QRZLookup : BaseLookup
     {
-        [ResetOnClear(true)]
-        public override Name AmateurName
+        [ResetOnClear()]
+        public sealed override Name AmateurName
         {
-            get
-            {
-                return qrzName;
-            }
-            set
-            {
-                qrzName = (QRZName)value;
-            }
+            get => qrzName;
+            set => qrzName = (QRZName)value;
         }
         private QRZName qrzName = new();
 
         #region Callsigns
-        public override License License 
+        public sealed override License License 
         { 
-            get
-            {
-                return qrzLicense;
-            }
-            protected set
-            {
-                qrzLicense = (QRZLicense)value;
-            }
+            get => qrzLicense;
+            protected set => qrzLicense = (QRZLicense)value;
         }
         private QRZLicense qrzLicense = new();
 
-        [ResetOnClear(true)]
-        public License? PreviousCallsign;
-        [ResetOnClear(true)]
-        public List<License>? Aliases;
+        [ResetOnClear()]
+        public License PreviousCallsign = new();
+        
+        [ResetOnClear()]
+        public List<License> Aliases = new();
         #endregion
 
         #region Locators
-        [ResetOnClear(true)]
-        public override Address? Address
+        [ResetOnClear()]
+        public override Address Address
         {
-            get
-            {
-                return qrzAddress;
-            }
-            protected set
-            {
-                qrzAddress = (QRZAddress)value;
-            }
+            get => qrzAddress;
+            protected set => qrzAddress = (QRZAddress)value;
         }
         private QRZAddress qrzAddress = new();
-        // public TimeZoneInfo? TimeZone = new();
+
+        [ResetOnClear()]
+        public override Locators Locators { get => qrzLocators; set => qrzLocators = (QRZLocators)value; }
+        private QRZLocators qrzLocators = new();
         #endregion
 
         #region QSL Details
-        [ResetOnClear(true)]
-        public QSLMethods? QSLMethods;
+        [ResetOnClear()]
+        // ReSharper disable once InconsistentNaming
+        public QSLMethods QSLMethods = new();
         #endregion
 
         #region Misc
-        [ResetOnClear(true)]
-        public Uri? ImageURL;
+        [ResetOnClear()]
+        public Uri? ImageUrl;
         #endregion
 
         #region API Details
-        private string? username;
-        private string? password;
-        private string? sessionKey = string.Empty;
-        RestClient api = new RestClient(new RestClientOptions("https://xmldata.qrz.com/xml/1.31"));
+        private readonly string username;
+        private readonly string password;
+        private string sessionKey = string.Empty;
+        private RestClient api = new RestClient(new RestClientOptions("https://xmldata.qrz.com/xml/1.31"));
         #endregion
 
         private bool disposedValue;
@@ -82,30 +69,28 @@ namespace CallsignToolkit.CallbookLookup.QRZ
         #region Constructors
         public QRZLookup()
         {
-            if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("QRZ_USER")))
+            if (string.IsNullOrEmpty(GetEnvironmentVariable("QRZ_USER")))
             {
                 throw new Exception("QRZ Username not set. Pass via string or set environment variable QRZ_USER");
             }
-
-            if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("QRZ_PASSWORD")))
+            else if (string.IsNullOrEmpty(GetEnvironmentVariable("QRZ_PASSWORD")))
             {
                 throw new Exception("QRZ Password not set.  Pass via string or set environment variable QRZ_PASSWORD");
             }
-            
-            this.username = Environment.GetEnvironmentVariable("QRZ_USER");
-            this.password = Environment.GetEnvironmentVariable("QRZ_PASSWORD");
-            this.refreshSessionKey().Wait();
+            else
+            {
+                this.username = GetEnvironmentVariable("QRZ_USER") ?? string.Empty;
+                this.password = GetEnvironmentVariable("QRZ_PASSWORD") ?? string.Empty;
+                this.refreshSessionKey().Wait();   
+            }
         }
-        public QRZLookup(string callsign)
+        public QRZLookup(string callsign) : this()
         {
             License license = new QRZLicense()
             {
                 Callsign = callsign
             };
-            this.License = (QRZLicense)license;
-
-            this.username = Environment.GetEnvironmentVariable("QRZ_USER");
-            this.password = Environment.GetEnvironmentVariable("QRZ_PASSWORD");
+            this.License = license;
         }
         public QRZLookup(string username, string password)
         {
@@ -119,7 +104,7 @@ namespace CallsignToolkit.CallbookLookup.QRZ
             {
                 Callsign = callsign
             };
-            this.License = (QRZLicense)license;
+            this.License = license;
             this.username = username;
             this.password = password;
         }
@@ -132,29 +117,29 @@ namespace CallsignToolkit.CallbookLookup.QRZ
                 await refreshSessionKey();
             }
 
-            var request = new RestRequest();
+            RestRequest request = new RestRequest();
             request.AddOrUpdateParameter("s", this.sessionKey);
             request.AddOrUpdateParameter("callsign", this.License.Callsign);
             request.AddHeader("Content-Type", "application/xml");
 
-            var response = await api.ExecuteAsync<QRZDatabase>(request, Method.Get);
+            RestResponse<QRZDatabase> response = await api.ExecuteAsync<QRZDatabase>(request, Method.Get);
             if (response.IsSuccessful == false || response.Data == null)
             {
                 throw new Exception("Error accessing QRZ API.", response.ErrorException);
             }
-            else if (response.Data.Session.Error != null)
+            else if (response.Data.Session.Error != string.Empty)
             {
                 switch (response.Data.Session.Error)
                 {
-                    case string c when c.Contains("Session Timeout"):
+                    case { } c when c.Contains("Session Timeout"):
                         await refreshSessionKey();
                         await PerformLookup();
                         break;
-                    case string b when b.Contains("Invalid Session Key"):
+                    case { } b when b.Contains("Invalid Session Key"):
                         await refreshSessionKey();
                         await PerformLookup();
                         break;
-                    case string a when a.Contains("Not found:"):
+                    case { } a when a.Contains("Not found:"):
                         throw new CallsignNotFound(this.License.Callsign);                        
                     default:
                         throw new Exception("QRZ XML API: " + response.Data.Session.Error);
@@ -171,23 +156,27 @@ namespace CallsignToolkit.CallbookLookup.QRZ
             this.Aliases = await GetAliasesFromResults(response.Data);
             this.Address = await GetAddressFromResults(response.Data);
             this.QSLMethods = await GetQSLMethodsFromResults(response.Data);
-            this.ImageURL = await GetImageURLFromResults(response.Data);
+            this.ImageUrl = await GetImageUrlFromResults(response.Data);
+            this.Locators = await GetLocatorsFromResults(response.Data);
         }
 
         public override async Task PerformLookup(string callsign)
         {
-            QRZLicense license = new QRZLicense();
-            license.Callsign = callsign;
+            QRZLicense license = new QRZLicense
+            {
+                Callsign = callsign
+            };
             this.License = license;
             await PerformLookup();
         }
 
-        internal async Task refreshSessionKey()
+        // ReSharper disable once InconsistentNaming
+        private async Task refreshSessionKey()
         {
-            var request = new RestRequest().AddParameter("username", this.username).AddParameter("password", this.password);
+            RestRequest request = new RestRequest().AddParameter("username", this.username).AddParameter("password", this.password);
             request.AddHeader("Content-Type", "application/xml");
             
-            var response = await api.ExecuteAsync<QRZDatabase>(request, Method.Get);
+            RestResponse<QRZDatabase> response = await api.ExecuteAsync<QRZDatabase>(request, Method.Get);
             
             if (response.IsSuccessful == false)
             {
@@ -197,10 +186,10 @@ namespace CallsignToolkit.CallbookLookup.QRZ
             {
                 throw new Exception("QRZ XML API: Non-subscriber access denied.");
             }
-            this.sessionKey = response.Data?.Session.Key;
+            this.sessionKey = response.Data?.Session.Key ?? string.Empty;
         }
 
-        public async override Task ClearResults()
+        public override async Task ClearResults()
         {
             api = new RestClient(new RestClientOptions("https://xmldata.qrz.com/xml/1.31"));
             this.License = new QRZLicense();
@@ -209,17 +198,17 @@ namespace CallsignToolkit.CallbookLookup.QRZ
 
         private static Task<QRZName> GetAmateurNameFromResults(QRZDatabase results)
         {
-            QRZName qRZName = new()
+            QRZName qrzName = new()
             { 
                 FirstName = results.Callsign.Fname,
                 LastName = results.Callsign.Name,
                 Nickname = results.Callsign.Nickname
             };
 
-            var parsedname = Name.SeperateMiddleInitialFromFirstName(qRZName);
-            qRZName = (QRZName)parsedname;
+            Name parsedName = Name.SeperateMiddleInitialFromFirstName(qrzName);
+            qrzName = (QRZName)parsedName;
             
-            return Task.FromResult<QRZName>(qRZName);
+            return Task.FromResult(qrzName);
         }
         
         private static Task<QRZLicense> GetLicenseFromResults(QRZDatabase results) 
@@ -250,21 +239,15 @@ namespace CallsignToolkit.CallbookLookup.QRZ
 
         private static Task<List<License>> GetAliasesFromResults(QRZDatabase results)
         {
-            if(results.Callsign.Aliases == null)
+            List<License> aliases = new();
+            List<string> calls = results.Callsign.Aliases.Split(',').ToList();
+            
+            if (calls.Count > 0)
             {
-                return Task.FromResult<List<License>>(null);
+                calls.ForEach(x => aliases.Add(new License(x)));   
             }
-            else
-            {
-                List<License> aliases = new List<License>();
-                string[] calls = results.Callsign.Aliases.Split(',');
-
-                foreach (string call in calls)
-                {
-                    aliases.Add(new License(call));
-                }
-                return Task.FromResult(aliases);
-            }
+            
+            return Task.FromResult(aliases);
         }
 
         private static Task<QRZAddress> GetAddressFromResults(QRZDatabase results)
@@ -282,36 +265,35 @@ namespace CallsignToolkit.CallbookLookup.QRZ
 
             if(!string.IsNullOrEmpty(results.Callsign.Email))
             {
-                MailAddress email = new MailAddress(results.Callsign.Email, results.Callsign.Name);
-                address.EmailAddress = email;
+                address.EmailAddress = new MailAddress(results.Callsign.Email, results.Callsign.Name);
             }
 
             if (!string.IsNullOrEmpty(results.Callsign.Url))
             {
-                Uri webaddress = new Uri(results.Callsign.Url);
-                address.WebAddress = webaddress;
+                address.WebAddress = new Uri(results.Callsign.Url);
             }
 
             address = (QRZAddress)Address.SanitizePostCode(address);
             return Task.FromResult(address);
         }
 
+        // ReSharper disable once InconsistentNaming
         private static Task<QSLMethods> GetQSLMethodsFromResults(QRZDatabase results)
         {
             QSLMethods qslMethods = new()
             {
-                UseEQSL = results.Callsign.Eqsl == "1" ? true : false,
-                UseLOTW = results.Callsign.Lotw == "1" ? true : false,
-                UsePaperQSL = results.Callsign.Mqsl == "Y" ? true : false,
+                UseEQSL = results.Callsign.Eqsl == "1",
+                UseLOTW = results.Callsign.Lotw == "1",
+                UsePaperQSL = results.Callsign.Mqsl == "1",
                 QSLManager = results.Callsign.QSLMgr
             };
 
             return Task.FromResult(qslMethods);
         }
 
-        private static Task<Uri> GetImageURLFromResults(QRZDatabase results)
+        private static Task<Uri> GetImageUrlFromResults(QRZDatabase results)
         {
-            Uri image = results.Callsign.Image == null ? new Uri("about:blank") : new Uri(results.Callsign.Image);
+            Uri image = results.Callsign.Image == string.Empty ? new Uri("about:blank") : new Uri(results.Callsign.Image);
             return Task.FromResult(image);
         }
 
@@ -326,20 +308,18 @@ namespace CallsignToolkit.CallbookLookup.QRZ
                 GridSquare = results.Callsign.Grid
             };
             int.TryParse(results.Callsign.Dxcc, out int dxccNumber);
-            locators.DXInformation = (DXInfomration)dxccNumber;
+            locators.DXInformation = (DXInformation)dxccNumber;
 
             return Task.FromResult(locators);
         }
 
         protected override void Dispose(bool disposing)
         {
-            if (!disposedValue)
+            if (disposedValue) return;
+            if (disposing)
             {
-                if (disposing)
-                {
-                }
-                disposedValue = true;
             }
+            disposedValue = true;
         }
     }
 }

@@ -1,9 +1,10 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Reflection;
+using System.Runtime.Serialization;
 
 namespace CallsignToolkit.Utilities
 {
     [DataContract]
-    public enum DXInfomration
+    public enum DXInformation
     {
         [EnumMember]
         [ContinentName("NA")]
@@ -13,6 +14,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 2, 3, 4, 9, 75 })]
         [PrefixRegex("^V[A-GOY][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Canada")]
         Canada = 1,
 
         [EnumMember]
@@ -23,6 +25,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 39 })]
         [PrefixRegex("")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Abu Ail Islands")]
         AbuAilIslands = 2,
 
         [EnumMember]
@@ -33,6 +36,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 40 })]
         [PrefixRegex("^(YA|T6)[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Afghanistan")]
         Afghanistan = 3,
 
         [EnumMember]
@@ -43,6 +47,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 53 })]
         [PrefixRegex("^3B[67][A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Agaléga and Saint Brandon")]
         AgalégaandSaintBrandon = 4,
 
         [EnumMember]
@@ -53,6 +58,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 18 })]
         [PrefixRegex("^OH0[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Åland Islands")]
         ÅlandIslands = 5,
 
         [EnumMember]
@@ -63,6 +69,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 1, 2 })]
         [PrefixRegex("^[KANW]L[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Alaska")]
         Alaska = 6,
 
         [EnumMember]
@@ -73,6 +80,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^ZA[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Albania")]
         Albania = 7,
 
         [EnumMember]
@@ -83,6 +91,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 53 })]
         [PrefixRegex("^VQ9[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Aldabra")]
         Aldabra = 8,
 
         [EnumMember]
@@ -93,6 +102,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 62 })]
         [PrefixRegex("^KH8[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("American Samoa")]
         AmericanSamoa = 9,
 
         [EnumMember]
@@ -103,6 +113,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 68 })]
         [PrefixRegex(@"^FT\/Z[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Amsterdam and Saint Paul Islands")]
         AmsterdamandSaintPaulIslands = 10,
 
         [EnumMember]
@@ -113,6 +124,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 49 })]
         [PrefixRegex("^VU4[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Andaman and Nicobar Islands")]
         AndamanandNicobarIslands = 11,
 
         [EnumMember]
@@ -123,6 +135,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^VP2E[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Anguilla")]
         Anguilla = 12,
 
         [EnumMember]
@@ -133,6 +146,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 67, 69, 70, 71, 72, 73, 74 })]
         [PrefixRegex("^(CE9|KC4)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Antarctica")]
         Antarctica = 13,
 
         [EnumMember]
@@ -143,6 +157,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 29 })]
         [PrefixRegex("^EK[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Armenia")]
         Armenia = 14,
 
         [EnumMember]
@@ -153,6 +168,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 20, 21, 22, 23, 24, 25, 26, 30, 31, 32, 33, 34, 35, 75 })]
         [PrefixRegex("^(U[A-I][089]|R[A-Z])[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Asiatic Russia")]
         AsiaticRussia = 15,
 
         [EnumMember]
@@ -163,6 +179,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 60 })]
         [PrefixRegex("^ZL9[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("New Zealand Subantarctic Islands")]
         NewZealandSubantarcticIslands = 16,
 
         [EnumMember]
@@ -173,6 +190,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^YV0[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Islade Aves")]
         IsladeAves = 17,
 
         [EnumMember]
@@ -183,6 +201,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 29 })]
         [PrefixRegex("^4[JK][A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Azerbaijan")]
         Azerbaijan = 18,
 
         [EnumMember]
@@ -193,6 +212,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^HK0[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Bajo Nuevo")]
         BajoNuevo = 19,
 
         [EnumMember]
@@ -203,6 +223,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 61 })]
         [PrefixRegex("^KH1[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Howland and Baker Islands")]
         HowlandandBakerIslands = 20,
 
         [EnumMember]
@@ -213,6 +234,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 37 })]
         [PrefixRegex("^E[A-H]6[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Balearic Islands")]
         BalearicIslands = 21,
 
         [EnumMember]
@@ -223,6 +245,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 64 })]
         [PrefixRegex("^T8[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Palau")]
         Palau = 22,
 
         [EnumMember]
@@ -233,6 +256,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 41 })]
         [PrefixRegex("")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Blenheim Reef")]
         BlenheimReef = 23,
 
         [EnumMember]
@@ -243,6 +267,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 67 })]
         [PrefixRegex("^3Y[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Bouvet Island")]
         BouvetIsland = 24,
 
         [EnumMember]
@@ -253,6 +278,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 54 })]
         [PrefixRegex("^ZC5[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("British North Borneo")]
         BritishNorthBorneo = 25,
 
         [EnumMember]
@@ -263,6 +289,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 48 })]
         [PrefixRegex("^VQ6[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("British Somliland")]
         BritishSomaliland = 26,
 
         [EnumMember]
@@ -273,6 +300,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 29 })]
         [PrefixRegex("^E[U-W][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Belarus")]
         Belarus = 27,
 
         [EnumMember]
@@ -283,6 +311,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^KZ5[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Panama Canal Zone")]
         PanamaCanalZone = 28,
 
         [EnumMember]
@@ -293,6 +322,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 36 })]
         [PrefixRegex("^E[A-H]8[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Canary Islands")]
         CanaryIslands = 29,
 
         [EnumMember]
@@ -303,6 +333,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 54 })]
         [PrefixRegex("^PK6[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Celebes and the Molucca Islands")]
         CelebesandtheMoluccaIslands = 30,
 
         [EnumMember]
@@ -313,6 +344,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 62 })]
         [PrefixRegex("^T31[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Phoenix Islands")]
         PhoenixIslands = 31,
 
         [EnumMember]
@@ -323,6 +355,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 37 })]
         [PrefixRegex("^E[A-H]9[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Ceuta and Melilla")]
         CeutaandMelilla = 32,
 
         [EnumMember]
@@ -333,6 +366,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 41 })]
         [PrefixRegex("^VQ9[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Chagos Islands")]
         ChagosIslands = 33,
 
         [EnumMember]
@@ -343,6 +377,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 60 })]
         [PrefixRegex("^ZL7[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Chatham Islands")]
         ChathamIslands = 34,
 
         [EnumMember]
@@ -353,6 +388,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 54 })]
         [PrefixRegex("^VK9X[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Christmas Island")]
         ChristmasIsland = 35,
 
         [EnumMember]
@@ -363,6 +399,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 10 })]
         [PrefixRegex("^(FO|TX)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Clipperton Island")]
         ClippertonIsland = 36,
 
         [EnumMember]
@@ -373,6 +410,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 12 })]
         [PrefixRegex("^TI9[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Cocos Island")]
         CocosIsland = 37,
 
         [EnumMember]
@@ -383,6 +421,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 54 })]
         [PrefixRegex("^VK9C[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Cocos Keeling Islands")]
         CocosKeelingIslands = 38,
 
         [EnumMember]
@@ -393,6 +432,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^(SV|J4)9[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Crete")]
         Crete = 40,
 
         [EnumMember]
@@ -403,6 +443,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 68 })]
         [PrefixRegex(@"^FT\/W[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Crozet Islands")]
         CrozetIslands = 41,
 
         [EnumMember]
@@ -413,6 +454,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 41 })]
         [PrefixRegex("^CR8[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Daman and Diu")]
         DamanandDiu = 42,
 
         [EnumMember]
@@ -423,6 +465,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^KP5[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Desecheo Island")]
         DesecheoIsland = 43,
 
         [EnumMember]
@@ -433,6 +476,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 53 })]
         [PrefixRegex("^VQ9[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Desroches Island")]
         DesrochesIsland = 44,
 
         [EnumMember]
@@ -443,6 +487,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^(SV|J4)5[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Dodecanese")]
         Dodecanese = 45,
 
         [EnumMember]
@@ -453,6 +498,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 54 })]
         [PrefixRegex("^9M[68][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("East Malaysia")]
         EastMalaysia = 46,
 
         [EnumMember]
@@ -463,6 +509,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 63 })]
         [PrefixRegex("^CE0[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Easter Island")]
         EasterIsland = 47,
 
         [EnumMember]
@@ -473,6 +520,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 61, 63 })]
         [PrefixRegex("^T32[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Line Islands")]
         LineIslands = 48,
 
         [EnumMember]
@@ -483,6 +531,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 47 })]
         [PrefixRegex("^3C[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Equatorial Guinea")]
         EquatorialGuinea = 49,
 
         [EnumMember]
@@ -493,6 +542,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 10 })]
         [PrefixRegex("^X[A-I][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Mexico")]
         Mexico = 50,
 
         [EnumMember]
@@ -503,6 +553,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 48 })]
         [PrefixRegex("^E3[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Eritrea")]
         Eritrea = 51,
 
         [EnumMember]
@@ -513,6 +564,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 29 })]
         [PrefixRegex("^ES[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Estonia")]
         Estonia = 52,
 
         [EnumMember]
@@ -523,6 +575,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 48 })]
         [PrefixRegex("^ET[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Ethiopia")]
         Ethiopia = 53,
 
         [EnumMember]
@@ -533,6 +586,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 19, 20, 29, 30 })]
         [PrefixRegex("^(U[A-I][1-7]|R[A-Z])[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("European Russia")]
         EuropeanRussia = 54,
 
         [EnumMember]
@@ -543,6 +597,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 53 })]
         [PrefixRegex("^VQ9[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Farguhar Group")]
         FarquharGroup = 55,
 
         [EnumMember]
@@ -553,6 +608,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 13 })]
         [PrefixRegex("^P[P-Y]0F[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Fernandode Noronha")]
         FernandodeNoronha = 56,
 
         [EnumMember]
@@ -563,6 +619,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 47, 52 })]
         [PrefixRegex("^FQ8[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("French Equatorial Africa")]
         FrenchEquatorialAfrica = 57,
 
         [EnumMember]
@@ -573,6 +630,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 49 })]
         [PrefixRegex("^FI8[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("French Indo China")]
         FrenchIndoChina = 58,
 
         [EnumMember]
@@ -583,6 +641,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 46 })]
         [PrefixRegex("^FF[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("French West Africa")]
         FrenchWestAfrica = 59,
 
         [EnumMember]
@@ -593,6 +652,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^C6[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Bahamas")]
         Bahamas = 60,
 
         [EnumMember]
@@ -603,6 +663,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 75 })]
         [PrefixRegex("^R1/F[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Franz Josef Land")]
         FranzJosefLand = 61,
 
         [EnumMember]
@@ -613,6 +674,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^8P[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Barbados")]
         Barbados = 62,
 
         [EnumMember]
@@ -623,6 +685,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 12 })]
         [PrefixRegex("^FY[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("French Guiana")]
         FrenchGuiana = 63,
 
         [EnumMember]
@@ -633,6 +696,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^VP9[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Bermuda")]
         Bermuda = 64,
 
         [EnumMember]
@@ -643,6 +707,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^VP2V[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("British Virgin Islands")]
         BritishVirginIslands = 65,
 
         [EnumMember]
@@ -653,6 +718,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^V3[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Belize")]
         Belize = 66,
 
         [EnumMember]
@@ -663,6 +729,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 41 })]
         [PrefixRegex("^FN8[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("French India")]
         FrenchIndia = 67,
 
         [EnumMember]
@@ -673,6 +740,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 39 })]
         [PrefixRegex("^(8Z5|9K3)[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Kuwait Saudi Arabia Neutral Zone")]
         KuwaitSaudiArabiaNeutralZone = 68,
 
         [EnumMember]
@@ -683,6 +751,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^ZF[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Cayman Islands")]
         CaymanIslands = 69,
 
         [EnumMember]
@@ -693,6 +762,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^C[MO][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Cuba")]
         Cuba = 70,
 
         [EnumMember]
@@ -703,6 +773,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 12 })]
         [PrefixRegex("^H[CD]8[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Galápagos Islands")]
         GalápagosIslands = 71,
 
         [EnumMember]
@@ -713,6 +784,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^HI[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Dominican Republic")]
         DominicanRepublic = 72,
 
         [EnumMember]
@@ -723,6 +795,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^(YS|HU)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("El Salvador")]
         ElSalvador = 74,
 
         [EnumMember]
@@ -733,6 +806,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 29 })]
         [PrefixRegex("^4L[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Georgia")]
         Georgia = 75,
 
         [EnumMember]
@@ -743,6 +817,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 12 })]
         [PrefixRegex("^T[GD][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Guatemala")]
         Guatemala = 76,
 
         [EnumMember]
@@ -753,6 +828,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^J3[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Grenada")]
         Grenada = 77,
 
         [EnumMember]
@@ -763,6 +839,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^HH[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Haiti")]
         Haiti = 78,
 
         [EnumMember]
@@ -773,6 +850,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^(FG|TO)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Guadeloupe")]
         Guadeloupe = 79,
 
         [EnumMember]
@@ -783,6 +861,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^H[QR][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Honduras")]
         Honduras = 80,
 
         [EnumMember]
@@ -793,6 +872,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^DA-DM[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("West Germany")]
         WestGermany = 81,
 
         [EnumMember]
@@ -803,6 +883,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^6Y[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Jamaica")]
         Jamaica = 82,
 
         [EnumMember]
@@ -813,6 +894,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^(FM|TO)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Martinique")]
         Martinique = 84,
 
         [EnumMember]
@@ -823,6 +905,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^PJ[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Bonaire and Curaçao")]
         BonaireandCuraçao = 85,
 
         [EnumMember]
@@ -833,6 +916,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^(YN|H[67T])[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Nicaragua")]
         Nicaragua = 86,
 
         [EnumMember]
@@ -843,6 +927,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^H[OP][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Panama")]
         Panama = 88,
 
         [EnumMember]
@@ -853,6 +938,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^VP5[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Turks and Caicos Islands")]
         TurksandCaicosIslands = 89,
 
         [EnumMember]
@@ -863,6 +949,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^9[YZ][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Trinidad and Tobago")]
         TrinidadandTobago = 90,
 
         [EnumMember]
@@ -873,6 +960,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^P4[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Aruba")]
         Aruba = 91,
 
         [EnumMember]
@@ -883,6 +971,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 53 })]
         [PrefixRegex("")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Geyser Reef")]
         GeyserReef = 93,
 
         [EnumMember]
@@ -893,6 +982,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^V2[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Antigua and Barbuda")]
         AntiguaandBarbuda = 94,
 
         [EnumMember]
@@ -903,6 +993,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^J7[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Dominica")]
         Dominica = 95,
 
         [EnumMember]
@@ -913,6 +1004,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^VP2M[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Montserrat")]
         Montserrat = 96,
 
         [EnumMember]
@@ -923,6 +1015,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^J6[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Saint Lucia")]
         SaintLucia = 97,
 
         [EnumMember]
@@ -933,6 +1026,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^J8[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Saint Vincent and the Grenadines")]
         SaintVincentandtheGrenadines = 98,
 
         [EnumMember]
@@ -943,6 +1037,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 53 })]
         [PrefixRegex(@"^(FT\/G|TO)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Glorioso Islands")]
         GloriosoIslands = 99,
 
         [EnumMember]
@@ -953,6 +1048,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 14, 16 })]
         [PrefixRegex("^L[O-W][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Argentina")]
         Argentina = 100,
 
         [EnumMember]
@@ -963,6 +1059,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 41 })]
         [PrefixRegex("^CR8[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Goa")]
         Goa = 101,
 
         [EnumMember]
@@ -973,6 +1070,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 46 })]
         [PrefixRegex("^ZD4[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("British Togoland")]
         BritishTogoland = 102,
 
         [EnumMember]
@@ -983,6 +1081,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 64 })]
         [PrefixRegex("^KH2[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Guam")]
         Guam = 103,
 
         [EnumMember]
@@ -993,6 +1092,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 12, 14 })]
         [PrefixRegex("^CP[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Bolivia")]
         Bolivia = 104,
 
         [EnumMember]
@@ -1003,6 +1103,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^KG4[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Guantanamo Bay")]
         GuantanamoBay = 105,
 
         [EnumMember]
@@ -1013,6 +1114,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 27 })]
         [PrefixRegex("^G[UP][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Guernsey")]
         Guernsey = 106,
 
         [EnumMember]
@@ -1023,6 +1125,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 46 })]
         [PrefixRegex("^3X[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Guinea")]
         Guinea = 107,
 
         [EnumMember]
@@ -1033,6 +1136,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 12, 13, 15 })]
         [PrefixRegex("^(P[P-Y]|Z[V-Z])[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Brazil")]
         Brazil = 108,
 
         [EnumMember]
@@ -1043,6 +1147,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 46 })]
         [PrefixRegex("^J5[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Guinea Bissau")]
         GuineaBissau = 109,
 
         [EnumMember]
@@ -1053,6 +1158,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 61 })]
         [PrefixRegex("^KH[67][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Hawaii")]
         Hawaii = 110,
 
         [EnumMember]
@@ -1063,6 +1169,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 68 })]
         [PrefixRegex("^VK0[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Heard Island and McDonald Islands")]
         HeardIslandandMcDonaldIslands = 111,
 
         [EnumMember]
@@ -1073,6 +1180,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 14, 16 })]
         [PrefixRegex("^C[A-E][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Chile")]
         Chile = 112,
 
         [EnumMember]
@@ -1083,6 +1191,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 37 })]
         [PrefixRegex("^EA9[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Ifni")]
         Ifni = 113,
 
         [EnumMember]
@@ -1093,6 +1202,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 27 })]
         [PrefixRegex("^G[DT][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Isle of Man")]
         IsleofMan = 114,
 
         [EnumMember]
@@ -1103,6 +1213,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 48 })]
         [PrefixRegex("^I5[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Italian Somaliland")]
         ItalianSomaliland = 115,
 
         [EnumMember]
@@ -1113,6 +1224,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 12 })]
         [PrefixRegex("^(H[JK]|5[JK])[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Colombia")]
         Colombia = 116,
 
         [EnumMember]
@@ -1123,6 +1235,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^4U[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("International Telecommunication Union Headquarters")]
         InternationalTelecommunicationUnionHeadquarters = 117,
 
         [EnumMember]
@@ -1133,6 +1246,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 18 })]
         [PrefixRegex("^JX[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Jan Mayen")]
         JanMayen = 118,
 
         [EnumMember]
@@ -1143,6 +1257,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 54 })]
         [PrefixRegex("^PK[1-3][A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Java")]
         Java = 119,
 
         [EnumMember]
@@ -1153,6 +1268,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 12 })]
         [PrefixRegex("^H[CD][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Ecuador")]
         Ecuador = 120,
 
         [EnumMember]
@@ -1163,6 +1279,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 27 })]
         [PrefixRegex("^G[JH][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Jersey")]
         Jersey = 122,
 
         [EnumMember]
@@ -1173,6 +1290,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 61 })]
         [PrefixRegex("^KH3[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Johnston Atoll")]
         JohnstonAtoll = 123,
 
         [EnumMember]
@@ -1183,6 +1301,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 53 })]
         [PrefixRegex(@"^(FT\/J|E|TO)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Juande Nova and Europa Islands")]
         JuandeNovaandEuropaIslands = 124,
 
         [EnumMember]
@@ -1193,6 +1312,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 14 })]
         [PrefixRegex("^CE0[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Juan Fernandez Islands")]
         JuanFernándezIslands = 125,
 
         [EnumMember]
@@ -1203,6 +1323,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 29 })]
         [PrefixRegex("^[UR]A2[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Kalingrad")]
         Kaliningrad = 126,
 
         [EnumMember]
@@ -1213,6 +1334,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 39 })]
         [PrefixRegex("^VS9K[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Kamaran Island")]
         KamaranIsland = 127,
 
         [EnumMember]
@@ -1223,6 +1345,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 19 })]
         [PrefixRegex("^UN1[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Karelo Finnish Soviet Socialist Republic")]
         KareloFinnishSovietSocialistRepublic = 128,
 
         [EnumMember]
@@ -1233,6 +1356,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 12 })]
         [PrefixRegex("^8R[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Guyana")]
         Guyana = 129,
 
         [EnumMember]
@@ -1243,6 +1367,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 29, 30, 31 })]
         [PrefixRegex("^U[N-Q][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Kazakhstan")]
         Kazakhstan = 130,
 
         [EnumMember]
@@ -1253,6 +1378,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 68 })]
         [PrefixRegex(@"^FT\/X[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Kerguelen Islands")]
         KerguelenIslands = 131,
 
         [EnumMember]
@@ -1263,6 +1389,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 14 })]
         [PrefixRegex("^ZP[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Paraguay")]
         Paraguay = 132,
 
         [EnumMember]
@@ -1273,6 +1400,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 60 })]
         [PrefixRegex("^ZL8[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Kermadec Islands")]
         KermadecIslands = 133,
 
         [EnumMember]
@@ -1283,6 +1411,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 61 })]
         [PrefixRegex("^KH5K[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Kingman Reef")]
         KingmanReef = 134,
 
         [EnumMember]
@@ -1293,6 +1422,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 30, 31 })]
         [PrefixRegex("^EX[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Kyrgyzstan")]
         Kyrgyzstan = 135,
 
         [EnumMember]
@@ -1303,6 +1433,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 12 })]
         [PrefixRegex("^O[A-C][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Peru")]
         Peru = 136,
 
         [EnumMember]
@@ -1313,6 +1444,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 44 })]
         [PrefixRegex("^(HL|6[K-N])[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("South Korea")]
         SouthKorea = 137,
 
         [EnumMember]
@@ -1323,6 +1455,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 61 })]
         [PrefixRegex("^KH7K[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Kure Atoll")]
         KureAtoll = 138,
 
         [EnumMember]
@@ -1333,6 +1466,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 39 })]
         [PrefixRegex("^VS9H[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Khuriya Muriya Islands")]
         KhuriyaMuriyaIslands = 139,
 
         [EnumMember]
@@ -1343,6 +1477,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 12 })]
         [PrefixRegex("^PZ[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Suriname")]
         Suriname = 140,
 
         [EnumMember]
@@ -1353,6 +1488,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 16 })]
         [PrefixRegex("^VP8[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Falkland Islands")]
         FalklandIslands = 141,
 
         [EnumMember]
@@ -1363,6 +1499,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 41 })]
         [PrefixRegex("^VU7[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Lakshadweep")]
         Lakshadweep = 142,
 
         [EnumMember]
@@ -1373,6 +1510,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 49 })]
         [PrefixRegex("^XW[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Laos")]
         Laos = 143,
 
         [EnumMember]
@@ -1383,6 +1521,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 14 })]
         [PrefixRegex("^C[V-X][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Uruguay")]
         Uruguay = 144,
 
         [EnumMember]
@@ -1393,6 +1532,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 29 })]
         [PrefixRegex("^YL[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Latvia")]
         Latvia = 145,
 
         [EnumMember]
@@ -1403,6 +1543,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 29 })]
         [PrefixRegex("^LY[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Lithuania")]
         Lithuania = 146,
 
         [EnumMember]
@@ -1413,6 +1554,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 60 })]
         [PrefixRegex("^VK9L[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Lord Howe Island")]
         LordHoweIsland = 147,
 
         [EnumMember]
@@ -1423,6 +1565,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 12 })]
         [PrefixRegex("^(Y[V-Y]|4M)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Venezuela")]
         Venezuela = 148,
 
         [EnumMember]
@@ -1433,6 +1576,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 36 })]
         [PrefixRegex("^CU[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Azores")]
         Azores = 149,
 
         [EnumMember]
@@ -1443,6 +1587,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 55, 58, 59 })]
         [PrefixRegex("^(VK|AX)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Australia")]
         Australia = 150,
 
         [EnumMember]
@@ -1453,6 +1598,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 29 })]
         [PrefixRegex("^R1/M[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("MalyVysotskyIsland")]
         MalyVysotskyIsland = 151,
 
         [EnumMember]
@@ -1463,6 +1609,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 44 })]
         [PrefixRegex("^XX9[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Macao")]
         Macao = 152,
 
         [EnumMember]
@@ -1473,6 +1620,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 60 })]
         [PrefixRegex("^VK0[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Macquarie Island")]
         MacquarieIsland = 153,
 
         [EnumMember]
@@ -1483,6 +1631,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 39 })]
         [PrefixRegex("^4W[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Yemen Arab Republic")]
         YemenArabRepublic = 154,
 
         [EnumMember]
@@ -1493,6 +1642,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 54 })]
         [PrefixRegex("^(VS|9M)2[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Malaya")]
         Malaya = 155,
 
         [EnumMember]
@@ -1503,6 +1653,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 65 })]
         [PrefixRegex("^C2[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Nauru")]
         Nauru = 157,
 
         [EnumMember]
@@ -1513,6 +1664,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 56 })]
         [PrefixRegex("^YJ[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Vanuatu")]
         Vanuatu = 158,
 
         [EnumMember]
@@ -1523,6 +1675,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 41 })]
         [PrefixRegex("^8Q[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Maldives")]
         Maldives = 159,
 
         [EnumMember]
@@ -1533,6 +1686,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 62 })]
         [PrefixRegex("^A3[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Tonga")]
         Tonga = 160,
 
         [EnumMember]
@@ -1543,6 +1697,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 12 })]
         [PrefixRegex("^HK0[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Malpelo Island")]
         MalpeloIsland = 161,
 
         [EnumMember]
@@ -1553,6 +1708,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 56 })]
         [PrefixRegex("^(FK|TX)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("New Caledonia")]
         NewCaledonia = 162,
 
         [EnumMember]
@@ -1563,6 +1719,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 51 })]
         [PrefixRegex("^P2[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Papua New Guinea")]
         PapuaNewGuinea = 163,
 
         [EnumMember]
@@ -1573,6 +1730,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 33 })]
         [PrefixRegex("^C9[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Manchuria")]
         Manchuria = 164,
 
         [EnumMember]
@@ -1583,6 +1741,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 53 })]
         [PrefixRegex("^3B8[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Mauritius")]
         Mauritius = 165,
 
         [EnumMember]
@@ -1593,6 +1752,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 64 })]
         [PrefixRegex("^KH0[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Mariana Islands")]
         MarianaIslands = 166,
 
         [EnumMember]
@@ -1603,6 +1763,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 18 })]
         [PrefixRegex("^OJ0[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Märket Island")]
         MärketIsland = 167,
 
         [EnumMember]
@@ -1613,6 +1774,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 65 })]
         [PrefixRegex("^V7[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Marshall Islands")]
         MarshallIslands = 168,
 
         [EnumMember]
@@ -1623,6 +1785,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 53 })]
         [PrefixRegex("^(FH|TO)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Mayotte")]
         Mayotte = 169,
 
         [EnumMember]
@@ -1633,6 +1796,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 60 })]
         [PrefixRegex("^Z[L-M][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("New Zealand")]
         NewZealand = 170,
 
         [EnumMember]
@@ -1643,6 +1807,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 56 })]
         [PrefixRegex("^VK9M[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Mellish Reef")]
         MellishReef = 171,
 
         [EnumMember]
@@ -1653,6 +1818,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 63 })]
         [PrefixRegex("^VP6[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Pitcairn Islands")]
         PitcairnIslands = 172,
 
         [EnumMember]
@@ -1663,6 +1829,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 65 })]
         [PrefixRegex("^V6[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Micronesia")]
         Micronesia = 173,
 
         [EnumMember]
@@ -1673,6 +1840,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 61 })]
         [PrefixRegex("^KH4[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Midway Atoll")]
         MidwayAtoll = 174,
 
         [EnumMember]
@@ -1683,6 +1851,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 63 })]
         [PrefixRegex("^(FO|TX)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("French Polynesia")]
         FrenchPolynesia = 175,
 
         [EnumMember]
@@ -1693,6 +1862,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 56 })]
         [PrefixRegex("^3D2[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Fiji")]
         Fiji = 176,
 
         [EnumMember]
@@ -1703,6 +1873,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 90 })]
         [PrefixRegex("^JD1[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Minami Torishima")]
         MinamiTorishima = 177,
 
         [EnumMember]
@@ -1713,6 +1884,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 62 })]
         [PrefixRegex("^1M[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Minerva Reefs")]
         MinervaReefs = 178,
 
         [EnumMember]
@@ -1723,6 +1895,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 29 })]
         [PrefixRegex("^ER[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Moldova")]
         Moldova = 179,
 
         [EnumMember]
@@ -1733,6 +1906,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^SV/A[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Mount Athos")]
         MountAthos = 180,
 
         [EnumMember]
@@ -1743,6 +1917,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 53 })]
         [PrefixRegex("^C[89][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Mozambique")]
         Mozambique = 181,
 
         [EnumMember]
@@ -1753,6 +1928,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^KP1[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Navassa Island")]
         NavassaIsland = 182,
 
         [EnumMember]
@@ -1763,6 +1939,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 54 })]
         [PrefixRegex("^PK5[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Netherlands Borneo")]
         NetherlandsBorneo = 183,
 
         [EnumMember]
@@ -1773,6 +1950,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 51 })]
         [PrefixRegex("^JZ0[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Netherlands New Guinea")]
         NetherlandsNewGuinea = 184,
 
         [EnumMember]
@@ -1783,6 +1961,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 51 })]
         [PrefixRegex("^H4[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Solomon Islands")]
         SolomonIslands = 185,
 
         [EnumMember]
@@ -1793,7 +1972,8 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 9 })]
         [PrefixRegex("^VO[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
-        Newfoundland, Labrador = 186,
+        [FriendlyName("Newfoundland, Labrador")]
+        NewfoundlandLabrador = 186,
 
         [EnumMember]
         [ContinentName("AF")]
@@ -1803,6 +1983,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 46 })]
         [PrefixRegex("^5U[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Niger")]
         Niger = 187,
 
         [EnumMember]
@@ -1813,6 +1994,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 62 })]
         [PrefixRegex("^E6[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Nive")]
         Niue = 188,
 
         [EnumMember]
@@ -1823,6 +2005,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 60 })]
         [PrefixRegex("^VK9N[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Norfolk Island")]
         NorfolkIsland = 189,
 
         [EnumMember]
@@ -1833,6 +2016,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 62 })]
         [PrefixRegex("^5W[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Samoa")]
         Samoa = 190,
 
         [EnumMember]
@@ -1843,6 +2027,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 62 })]
         [PrefixRegex("^E5[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("North Cook Islands")]
         NorthCookIslands = 191,
 
         [EnumMember]
@@ -1853,6 +2038,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 45 })]
         [PrefixRegex("^JD1[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Ogasawara Islands")]
         OgasawaraIslands = 192,
 
         [EnumMember]
@@ -1863,6 +2049,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 45 })]
         [PrefixRegex("^(KR[68]|JR6|KA6)[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Ryukyu Islands")]
         RyukyuIslands = 193,
 
         [EnumMember]
@@ -1873,6 +2060,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 45 })]
         [PrefixRegex("^7J1[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Okinotorishima")]
         Okinotorishima = 194,
 
         [EnumMember]
@@ -1883,6 +2071,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 52 })]
         [PrefixRegex("^3C0[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Annobón")]
         Annobón = 195,
 
         [EnumMember]
@@ -1893,6 +2082,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 61, 62 })]
         [PrefixRegex("^KH5[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Palmyra and Jarvis Islands")]
         PalmyraandJarvisIslands = 197,
 
         [EnumMember]
@@ -1903,6 +2093,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 51 })]
         [PrefixRegex("^(P2|VK9)[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Papua Territory")]
         PapuaTerritory = 198,
 
         [EnumMember]
@@ -1913,6 +2104,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 72 })]
         [PrefixRegex("^3Y[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Peter I Island")]
         PeterIIsland = 199,
 
         [EnumMember]
@@ -1923,6 +2115,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 54 })]
         [PrefixRegex("^CR(8|10)[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Portuguese Timor")]
         PortugueseTimor = 200,
 
         [EnumMember]
@@ -1933,6 +2126,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 57 })]
         [PrefixRegex("^ZS8[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Prince Edward and Marion Islands")]
         PrinceEdwardandMarionIslands = 201,
 
         [EnumMember]
@@ -1943,6 +2137,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^KP[34][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Puerto Rico")]
         PuertoRico = 202,
 
         [EnumMember]
@@ -1953,6 +2148,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 27 })]
         [PrefixRegex("^C3[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Andorra")]
         Andorra = 203,
 
         [EnumMember]
@@ -1963,6 +2159,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 10 })]
         [PrefixRegex("^X[A-I]4[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Revillagigedo Islands")]
         RevillagigedoIslands = 204,
 
         [EnumMember]
@@ -1973,6 +2170,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 66 })]
         [PrefixRegex("^ZD8[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Ascension Island")]
         AscensionIsland = 205,
 
         [EnumMember]
@@ -1983,6 +2181,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^OE[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Austria")]
         Austria = 206,
 
         [EnumMember]
@@ -1993,6 +2192,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 53 })]
         [PrefixRegex("^3B9[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Rodrigues Island")]
         RodriguesIsland = 207,
 
         [EnumMember]
@@ -2003,6 +2203,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 52 })]
         [PrefixRegex("^9U5[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Ruanda Urundi")]
         RuandaUrundi = 208,
 
         [EnumMember]
@@ -2013,6 +2214,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 27 })]
         [PrefixRegex("^O[N-T][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Belgium")]
         Belgium = 209,
 
         [EnumMember]
@@ -2023,6 +2225,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^9S4[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Saar")]
         Saar = 210,
 
         [EnumMember]
@@ -2033,6 +2236,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 9 })]
         [PrefixRegex("^CY0[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Sable Island")]
         SableIsland = 211,
 
         [EnumMember]
@@ -2043,6 +2247,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^LZ[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Bulgaria")]
         Bulgaria = 212,
 
         [EnumMember]
@@ -2053,6 +2258,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^(FS|TO)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Saint Martin")]
         SaintMartin = 213,
 
         [EnumMember]
@@ -2063,6 +2269,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^TK[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Corsica")]
         Corsica = 214,
 
         [EnumMember]
@@ -2073,6 +2280,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 39 })]
         [PrefixRegex("^(5B|C4|P3)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Cyprus")]
         Cyprus = 215,
 
         [EnumMember]
@@ -2083,6 +2291,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^HK0[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("San Andrés and Providencia")]
         SanAndrésandProvidencia = 216,
 
         [EnumMember]
@@ -2093,6 +2302,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 14 })]
         [PrefixRegex("^CE0[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Desventuradas Islands")]
         DesventuradasIslands = 217,
 
         [EnumMember]
@@ -2103,6 +2313,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^O[K-M][A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Czechoslovakia")]
         Czechoslovakia = 218,
 
         [EnumMember]
@@ -2113,6 +2324,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 47 })]
         [PrefixRegex("^S9[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Sao Tome and Principe")]
         SaoTomeandPrincipe = 219,
 
         [EnumMember]
@@ -2123,6 +2335,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 54 })]
         [PrefixRegex("^VS4[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Sarawak")]
         Sarawak = 220,
 
         [EnumMember]
@@ -2133,6 +2346,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 18 })]
         [PrefixRegex("^O[U-WZ][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Denmark")]
         Denmark = 221,
 
         [EnumMember]
@@ -2143,6 +2357,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 18 })]
         [PrefixRegex("^OY[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Faroe Islands")]
         FaroeIslands = 222,
 
         [EnumMember]
@@ -2153,6 +2368,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 27 })]
         [PrefixRegex("^(G|GX|M)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("England")]
         England = 223,
 
         [EnumMember]
@@ -2163,6 +2379,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 18 })]
         [PrefixRegex("^O[F-I][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Finland")]
         Finland = 224,
 
         [EnumMember]
@@ -2173,6 +2390,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^I[SM]0[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Sardinia")]
         Sardinia = 225,
 
         [EnumMember]
@@ -2183,6 +2401,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 39 })]
         [PrefixRegex("^8Z4[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Saudi Arabia Iraq Neutral Zone")]
         SaudiArabiaIraqNeutralZone = 226,
 
         [EnumMember]
@@ -2193,6 +2412,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 27 })]
         [PrefixRegex("^F[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("France")]
         France = 227,
 
         [EnumMember]
@@ -2203,6 +2423,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^(HK0|KP3|KS4)[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Serrana Bank Roncador Cay")]
         SerranaBankRoncadorCay = 228,
 
         [EnumMember]
@@ -2213,6 +2434,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^(DM|Y[2-9])[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("East Germany")]
         EastGermany = 229,
 
         [EnumMember]
@@ -2223,6 +2445,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^D[A-R][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Germany")]
         Germany = 230,
 
         [EnumMember]
@@ -2233,6 +2456,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 41 })]
         [PrefixRegex("^AC3[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Sikkim")]
         Sikkim = 231,
 
         [EnumMember]
@@ -2243,6 +2467,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 48 })]
         [PrefixRegex("^(T5|6O)[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Somalia")]
         Somalia = 232,
 
         [EnumMember]
@@ -2253,6 +2478,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 37 })]
         [PrefixRegex("^ZB2[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Gibraltar")]
         Gibraltar = 233,
 
         [EnumMember]
@@ -2263,6 +2489,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 62 })]
         [PrefixRegex("^E5[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("South Cook Islands")]
         SouthCookIslands = 234,
 
         [EnumMember]
@@ -2273,6 +2500,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 73 })]
         [PrefixRegex("^(VP8|LU)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("South Georgia Island")]
         SouthGeorgiaIsland = 235,
 
         [EnumMember]
@@ -2283,6 +2511,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^(S[V-Z]|J4)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Greece")]
         Greece = 236,
 
         [EnumMember]
@@ -2293,6 +2522,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 5, 75 })]
         [PrefixRegex("^OX[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Greenland")]
         Greenland = 237,
 
         [EnumMember]
@@ -2303,6 +2533,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 73 })]
         [PrefixRegex("^(VP8|LU)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("South Orkney Islands")]
         SouthOrkneyIslands = 238,
 
         [EnumMember]
@@ -2313,6 +2544,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^H[AG][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Hungary")]
         Hungary = 239,
 
         [EnumMember]
@@ -2323,6 +2555,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 73 })]
         [PrefixRegex("^(VP8|LU)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("South Sandwich Islands")]
         SouthSandwichIslands = 240,
 
         [EnumMember]
@@ -2333,6 +2566,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 73 })]
         [PrefixRegex("^(VP8|LU|CE9|HF0|4K1)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("South Shetland Islands")]
         SouthShetlandIslands = 241,
 
         [EnumMember]
@@ -2343,6 +2577,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 17 })]
         [PrefixRegex("^TF[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Iceland")]
         Iceland = 242,
 
         [EnumMember]
@@ -2353,16 +2588,18 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 39 })]
         [PrefixRegex("^VS9[APS][A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Peoples Democratic Rep. of Yemen")]
         PeoplesDemocraticRepofYemen = 243,
-
-[EnumMember]
+        
+        [EnumMember]
         [ContinentName("AF")]
         [ISOCountryCode("ZZ")]
         [CQZones(new[] { 34 })]
         [Deleted(true)]
         [ITUZones(new[] { 47, 48 })]
         [PrefixRegex("^ST0[A-Z0-9/]*$")]
-        [OutgoingQSLService(false)]
+        [OutgoingQSLService(false)] 
+        [FriendlyName("Southern Sudan")] 
         SouthernSudan = 244,
 
         [EnumMember]
@@ -2373,6 +2610,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 27 })]
         [PrefixRegex("^E[IJ][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Ireland")]
         Ireland = 245,
 
         [EnumMember]
@@ -2383,6 +2621,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^1A[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Sovereign Military Order of Malta")]
         SovereignMilitaryOrderofMalta = 246,
 
         [EnumMember]
@@ -2393,6 +2632,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 50 })]
         [PrefixRegex("")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Spratly Islands")]
         SpratlyIslands = 247,
 
         [EnumMember]
@@ -2403,6 +2643,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^I[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Italy")]
         Italy = 248,
 
         [EnumMember]
@@ -2413,6 +2654,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^V4[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Saint Kitts and Nevis")]
         SaintKittsandNevis = 249,
 
         [EnumMember]
@@ -2423,6 +2665,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 66 })]
         [PrefixRegex("^ZD7[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("St. Helena")]
         StHelena = 250,
 
         [EnumMember]
@@ -2433,6 +2676,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^HB0[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Liechtenstein")]
         Liechtenstein = 251,
 
         [EnumMember]
@@ -2443,6 +2687,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 9 })]
         [PrefixRegex("^CY9[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("St. Paul Island")]
         StPaulIsland = 252,
 
         [EnumMember]
@@ -2453,6 +2698,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 13 })]
         [PrefixRegex("^P[P-Y]0S[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Saint Peter and Saint Paul Archipelago")]
         SaintPeterandSaintPaulArchipelago = 253,
 
         [EnumMember]
@@ -2463,6 +2709,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 27 })]
         [PrefixRegex("^LX[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Luxembourg")]
         Luxembourg = 254,
 
         [EnumMember]
@@ -2473,6 +2720,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^PJ[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("St. Maarten Saba St. Eustatius")]
         StMaartenSabaStEustatius = 255,
 
         [EnumMember]
@@ -2483,6 +2731,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 36 })]
         [PrefixRegex("^CT3[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Madeira")]
         Madeira = 256,
 
         [EnumMember]
@@ -2493,6 +2742,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^9H[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Malta")]
         Malta = 257,
 
         [EnumMember]
@@ -2503,6 +2753,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 54 })]
         [PrefixRegex("^PK4[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Sumatra")]
         Sumatra = 258,
 
         [EnumMember]
@@ -2513,6 +2764,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 18 })]
         [PrefixRegex("^JW[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Svalbard")]
         Svalbard = 259,
 
         [EnumMember]
@@ -2523,6 +2775,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 27 })]
         [PrefixRegex("^3A[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Monaco")]
         Monaco = 260,
 
         [EnumMember]
@@ -2533,6 +2786,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^KS4[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Swan Island")]
         SwanIs = 261,
 
         [EnumMember]
@@ -2543,6 +2797,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 30 })]
         [PrefixRegex("^EY[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Tajikistan")]
         Tajikistan = 262,
 
         [EnumMember]
@@ -2553,6 +2808,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 27 })]
         [PrefixRegex("^P[A-I][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Netherlands")]
         Netherlands = 263,
 
         [EnumMember]
@@ -2563,6 +2819,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 37 })]
         [PrefixRegex("^CN2[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Tangier")]
         Tangier = 264,
 
         [EnumMember]
@@ -2573,6 +2830,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 27 })]
         [PrefixRegex("^G[IN][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Northern Ireland")]
         NorthernIreland = 265,
 
         [EnumMember]
@@ -2583,6 +2841,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 18 })]
         [PrefixRegex("^L[A-N][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Norway")]
         Norway = 266,
 
         [EnumMember]
@@ -2593,6 +2852,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 51 })]
         [PrefixRegex("^(P2|VK9)[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Territory of New Guinea")]
         TerritoryofNewGuinea = 267,
 
         [EnumMember]
@@ -2603,6 +2863,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 41 })]
         [PrefixRegex("^AC4[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Tibet")]
         Tibet = 268,
 
         [EnumMember]
@@ -2613,6 +2874,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^S[N-R][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Poland")]
         Poland = 269,
 
         [EnumMember]
@@ -2623,6 +2885,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 62 })]
         [PrefixRegex("^ZK3[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Tokelau")]
         Tokelau = 270,
 
         [EnumMember]
@@ -2633,6 +2896,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^I1[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Trieste")]
         Trieste = 271,
 
         [EnumMember]
@@ -2643,6 +2907,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 37 })]
         [PrefixRegex("^CT[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Portugal")]
         Portugal = 272,
 
         [EnumMember]
@@ -2653,6 +2918,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 15 })]
         [PrefixRegex("^P[P-Y]0T[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Trindade and Martin Vaz")]
         TrindadeandMartinVaz = 273,
 
         [EnumMember]
@@ -2663,6 +2929,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 66 })]
         [PrefixRegex("^ZD9[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Trist and Cunha and Gough Islands")]
         TristandaCunhaandGoughIslands = 274,
 
         [EnumMember]
@@ -2673,6 +2940,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^Y[O-R][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Romania")]
         Romania = 275,
 
         [EnumMember]
@@ -2683,6 +2951,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 53 })]
         [PrefixRegex(@"^(FT\/T|TO)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Tromelin Island")]
         TromelinIsland = 276,
 
         [EnumMember]
@@ -2693,6 +2962,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 9 })]
         [PrefixRegex("^FP[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Saint Pierre and Miquelon")]
         SaintPierreandMiquelon = 277,
 
         [EnumMember]
@@ -2703,6 +2973,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^T7[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("San Marino")]
         SanMarino = 278,
 
         [EnumMember]
@@ -2713,6 +2984,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 27 })]
         [PrefixRegex("^G[MS][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Scotland")]
         Scotland = 279,
 
         [EnumMember]
@@ -2723,6 +2995,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 30 })]
         [PrefixRegex("^EZ[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Turkmenistan")]
         Turkmenistan = 280,
 
         [EnumMember]
@@ -2733,6 +3006,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 37 })]
         [PrefixRegex("^E[A-H][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Spain")]
         Spain = 281,
 
         [EnumMember]
@@ -2743,6 +3017,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 65 })]
         [PrefixRegex("^T2[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Tuvalu")]
         Tuvalu = 282,
 
         [EnumMember]
@@ -2753,6 +3028,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 39 })]
         [PrefixRegex("^ZC4[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Sovereign Base Areas of Akrotiri and Dhekelia")]
         SovereignBaseAreasofAkrotiriandDhekelia = 283,
 
         [EnumMember]
@@ -2763,6 +3039,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 18 })]
         [PrefixRegex("^(S[A-M]|[78]S)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Sweden")]
         Sweden = 284,
 
         [EnumMember]
@@ -2773,6 +3050,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^KP2[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("US Virgin Islands")]
         USVirginIslands = 285,
 
         [EnumMember]
@@ -2783,6 +3061,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 48 })]
         [PrefixRegex("^5X[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Uganda")]
         Uganda = 286,
 
         [EnumMember]
@@ -2793,6 +3072,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^HB[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Switzerland")]
         Switzerland = 287,
 
         [EnumMember]
@@ -2803,6 +3083,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 29 })]
         [PrefixRegex("^(U[R-Z]|E[M-O])[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Ukraine")]
         Ukraine = 288,
 
         [EnumMember]
@@ -2813,6 +3094,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 8 })]
         [PrefixRegex("^4U[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("United Nations Headquarters")]
         UnitedNationsHeadquarters = 289,
 
         [EnumMember]
@@ -2823,6 +3105,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 6, 7, 8 })]
         [PrefixRegex("^(K|W|N|A[A-K])[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("United States of America")]
         UnitedStatesofAmerica = 291,
 
         [EnumMember]
@@ -2833,6 +3116,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 30 })]
         [PrefixRegex("^U[J-M][A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Uzbekistan")]
         Uzbekistan = 292,
 
         [EnumMember]
@@ -2843,6 +3127,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 49 })]
         [PrefixRegex("^(3W|XV)[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Vietnam")]
         VietNam = 293,
 
         [EnumMember]
@@ -2853,6 +3138,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 27 })]
         [PrefixRegex("^G[WC][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Wales")]
         Wales = 294,
 
         [EnumMember]
@@ -2863,6 +3149,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^HV[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Vatican")]
         Vatican = 295,
 
         [EnumMember]
@@ -2873,6 +3160,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^Y[TU][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Serbia")]
         Serbia = 296,
 
         [EnumMember]
@@ -2883,6 +3171,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 65 })]
         [PrefixRegex("^KH9[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Wake Island")]
         WakeIsland = 297,
 
         [EnumMember]
@@ -2893,6 +3182,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 62 })]
         [PrefixRegex("^FW[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Wallis and Futuna Islands")]
         WallisandFutunaIslands = 298,
 
         [EnumMember]
@@ -2903,6 +3193,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 54 })]
         [PrefixRegex("^9M[24][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("West Malaysia")]
         WestMalaysia = 299,
 
         [EnumMember]
@@ -2913,6 +3204,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 65 })]
         [PrefixRegex("^T30[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Gilbert Islands")]
         GilbertIslands = 301,
 
         [EnumMember]
@@ -2923,6 +3215,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 46 })]
         [PrefixRegex("^S0[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Western Sahara")]
         WesternSahara = 302,
 
         [EnumMember]
@@ -2933,6 +3226,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 55 })]
         [PrefixRegex("^VK9W[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Willis Island")]
         WillisIsland = 303,
 
         [EnumMember]
@@ -2943,6 +3237,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 39 })]
         [PrefixRegex("^A9[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Bahrain")]
         Bahrain = 304,
 
         [EnumMember]
@@ -2953,6 +3248,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 41 })]
         [PrefixRegex("^S2[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Bangladesh")]
         Bangladesh = 305,
 
         [EnumMember]
@@ -2963,6 +3259,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 41 })]
         [PrefixRegex("^A5[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Bhutan")]
         Bhutan = 306,
 
         [EnumMember]
@@ -2973,6 +3270,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 53 })]
         [PrefixRegex("^(VQ1|5H1)[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Zanzibar")]
         Zanzibar = 307,
 
         [EnumMember]
@@ -2983,6 +3281,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^T[IE][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Costa Rica")]
         CostaRica = 308,
 
         [EnumMember]
@@ -2993,6 +3292,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 49 })]
         [PrefixRegex("^X[YZ][A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Myanmar")]
         Myanmar = 309,
 
         [EnumMember]
@@ -3003,6 +3303,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 49 })]
         [PrefixRegex("^XU[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Cambodia")]
         Cambodia = 312,
 
         [EnumMember]
@@ -3013,6 +3314,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 41 })]
         [PrefixRegex("^4S[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Sri Lanka")]
         SriLanka = 315,
 
         [EnumMember]
@@ -3023,6 +3325,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 33, 42, 43, 44 })]
         [PrefixRegex("^B[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("China")]
         China = 318,
 
         [EnumMember]
@@ -3033,6 +3336,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 44 })]
         [PrefixRegex("^VR[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Hong Kong")]
         HongKong = 321,
 
         [EnumMember]
@@ -3043,6 +3347,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 41 })]
         [PrefixRegex("^VU[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("India")]
         India = 324,
 
         [EnumMember]
@@ -3053,6 +3358,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 51, 54 })]
         [PrefixRegex("^Y[B-H][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Indonesia")]
         Indonesia = 327,
 
         [EnumMember]
@@ -3063,6 +3369,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 40 })]
         [PrefixRegex("^E[PQ][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Iran")]
         Iran = 330,
 
         [EnumMember]
@@ -3073,6 +3380,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 39 })]
         [PrefixRegex("^YI[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Iraq")]
         Iraq = 333,
 
         [EnumMember]
@@ -3083,6 +3391,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 39 })]
         [PrefixRegex("^4[XZ][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Israel")]
         Israel = 336,
 
         [EnumMember]
@@ -3093,6 +3402,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 45 })]
         [PrefixRegex("^(J[A-S]|7[J-N])[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Japan")]
         Japan = 339,
 
         [EnumMember]
@@ -3103,6 +3413,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 39 })]
         [PrefixRegex("^JY[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Jordan")]
         Jordan = 342,
 
         [EnumMember]
@@ -3113,6 +3424,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 44 })]
         [PrefixRegex("^P5[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Democratic Peoples Republic Of Korea")]
         DemocraticPeoplesrepublicOfKorea = 344,
 
         [EnumMember]
@@ -3123,6 +3435,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 54 })]
         [PrefixRegex("^V8[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Brunei Darussalam")]
         BruneiDarussalam = 345,
 
         [EnumMember]
@@ -3133,6 +3446,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 39 })]
         [PrefixRegex("^9K[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Kuwait")]
         Kuwait = 348,
 
         [EnumMember]
@@ -3143,6 +3457,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 39 })]
         [PrefixRegex("^OD[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Lebanon")]
         Lebanon = 354,
 
         [EnumMember]
@@ -3153,6 +3468,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 32, 33 })]
         [PrefixRegex("^J[T-V][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Mongolia")]
         Mongolia = 363,
 
         [EnumMember]
@@ -3163,6 +3479,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 42 })]
         [PrefixRegex("^9N[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Nepal")]
         Nepal = 369,
 
         [EnumMember]
@@ -3173,6 +3490,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 39 })]
         [PrefixRegex("^A4[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Oman")]
         Oman = 370,
 
         [EnumMember]
@@ -3183,6 +3501,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 41 })]
         [PrefixRegex("^AP[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Pakistan")]
         Pakistan = 372,
 
         [EnumMember]
@@ -3193,6 +3512,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 50 })]
         [PrefixRegex("^(D[U-Z]|4[D-I])[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Philippines")]
         Philippines = 375,
 
         [EnumMember]
@@ -3203,6 +3523,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 39 })]
         [PrefixRegex("^A7[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Qatar")]
         Qatar = 376,
 
         [EnumMember]
@@ -3213,6 +3534,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 39 })]
         [PrefixRegex("^HZ[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Saudi Arabia")]
         SaudiArabia = 378,
 
         [EnumMember]
@@ -3223,6 +3545,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 53 })]
         [PrefixRegex("^S7[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Seychelles")]
         Seychelles = 379,
 
         [EnumMember]
@@ -3233,6 +3556,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 54 })]
         [PrefixRegex("^9V[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Singapore")]
         Singapore = 381,
 
         [EnumMember]
@@ -3243,6 +3567,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 48 })]
         [PrefixRegex("^J2[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Djibouti")]
         Djibouti = 382,
 
         [EnumMember]
@@ -3253,6 +3578,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 39 })]
         [PrefixRegex("^YK[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Syria")]
         Syria = 384,
 
         [EnumMember]
@@ -3263,6 +3589,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 44 })]
         [PrefixRegex("^B[U-X][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Taiwan")]
         Taiwan = 386,
 
         [EnumMember]
@@ -3273,6 +3600,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 49 })]
         [PrefixRegex("^(HS|E2)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Thailand")]
         Thailand = 387,
 
         [EnumMember]
@@ -3283,6 +3611,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 39 })]
         [PrefixRegex("^T[A-C][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Turkey")]
         Turkey = 390,
 
         [EnumMember]
@@ -3293,6 +3622,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 39 })]
         [PrefixRegex("^A6[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("United Arab Emirates")]
         UnitedArabEmirates = 391,
 
         [EnumMember]
@@ -3303,6 +3633,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 37 })]
         [PrefixRegex("^7[T-Y][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Algeria")]
         Algeria = 400,
 
         [EnumMember]
@@ -3313,6 +3644,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 52 })]
         [PrefixRegex("^D[23][A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Angola")]
         Angola = 401,
 
         [EnumMember]
@@ -3323,6 +3655,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 57 })]
         [PrefixRegex("^A2[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Botswana")]
         Botswana = 402,
 
         [EnumMember]
@@ -3333,6 +3666,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 52 })]
         [PrefixRegex("^9U[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Burundi")]
         Burundi = 404,
 
         [EnumMember]
@@ -3343,6 +3677,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 47 })]
         [PrefixRegex("^TJ[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Cameroon")]
         Cameroon = 406,
 
         [EnumMember]
@@ -3353,6 +3688,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 47 })]
         [PrefixRegex("^TL[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Central African Republic")]
         CentralAfricanRepublic = 408,
 
         [EnumMember]
@@ -3363,6 +3699,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 46 })]
         [PrefixRegex("^D4[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Cape Verde")]
         CapeVerde = 409,
 
         [EnumMember]
@@ -3373,6 +3710,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 47 })]
         [PrefixRegex("^TT[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Chad")]
         Chad = 410,
 
         [EnumMember]
@@ -3383,6 +3721,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 53 })]
         [PrefixRegex("^D6[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Comoros")]
         Comoros = 411,
 
         [EnumMember]
@@ -3393,6 +3732,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 52 })]
         [PrefixRegex("^TN[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Republic of the Congo")]
         RepublicoftheCongo = 412,
 
         [EnumMember]
@@ -3403,6 +3743,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 52 })]
         [PrefixRegex("^9[Q-T][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Democratic Republic of the Congo")]
         DemocraticRepublicoftheCongo = 414,
 
         [EnumMember]
@@ -3413,6 +3754,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 46 })]
         [PrefixRegex("^TY[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Benin")]
         Benin = 416,
 
         [EnumMember]
@@ -3423,6 +3765,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 52 })]
         [PrefixRegex("^TR[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Gabon")]
         Gabon = 420,
 
         [EnumMember]
@@ -3433,6 +3776,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 46 })]
         [PrefixRegex("^C5[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("The Gambia")]
         TheGambia = 422,
 
         [EnumMember]
@@ -3443,6 +3787,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 46 })]
         [PrefixRegex("^9G[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Ghana")]
         Ghana = 424,
 
         [EnumMember]
@@ -3453,6 +3798,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 46 })]
         [PrefixRegex("^TU[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Cote d'Ivoire")]
         CotedIvoire = 428,
 
         [EnumMember]
@@ -3463,6 +3809,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 48 })]
         [PrefixRegex("^5[YZ][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Kenya")]
         Kenya = 430,
 
         [EnumMember]
@@ -3473,6 +3820,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 57 })]
         [PrefixRegex("^7P[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Lesotho")]
         Lesotho = 432,
 
         [EnumMember]
@@ -3483,6 +3831,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 46 })]
         [PrefixRegex("^EL[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Liberia")]
         Liberia = 434,
 
         [EnumMember]
@@ -3493,6 +3842,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 38 })]
         [PrefixRegex("^5A[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Libya")]
         Libya = 436,
 
         [EnumMember]
@@ -3503,6 +3853,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 53 })]
         [PrefixRegex("^5R[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Madagascar")]
         Madagascar = 438,
 
         [EnumMember]
@@ -3513,6 +3864,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 53 })]
         [PrefixRegex("^7Q[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Malawi")]
         Malawi = 440,
 
         [EnumMember]
@@ -3523,6 +3875,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 46 })]
         [PrefixRegex("^TZ[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Mali")]
         Mali = 442,
 
         [EnumMember]
@@ -3533,6 +3886,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 46 })]
         [PrefixRegex("^5T[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Mauritania")]
         Mauritania = 444,
 
         [EnumMember]
@@ -3543,6 +3897,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 37 })]
         [PrefixRegex("^CN[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Morocco")]
         Morocco = 446,
 
         [EnumMember]
@@ -3553,6 +3908,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 46 })]
         [PrefixRegex("^5N[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Nigeria")]
         Nigeria = 450,
 
         [EnumMember]
@@ -3563,6 +3919,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 53 })]
         [PrefixRegex("^Z2[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Zimbabwe")]
         Zimbabwe = 452,
 
         [EnumMember]
@@ -3573,6 +3930,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 53 })]
         [PrefixRegex("^(FR|TO)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Réunion")]
         Réunion = 453,
 
         [EnumMember]
@@ -3583,6 +3941,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 52 })]
         [PrefixRegex("^9X[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Rwanda")]
         Rwanda = 454,
 
         [EnumMember]
@@ -3593,6 +3952,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 46 })]
         [PrefixRegex("^6[VW][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Senegal")]
         Senegal = 456,
 
         [EnumMember]
@@ -3603,6 +3963,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 46 })]
         [PrefixRegex("^9L[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Sierra Leone")]
         SierraLeone = 458,
 
         [EnumMember]
@@ -3613,6 +3974,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 56 })]
         [PrefixRegex("^3D2[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Rotuma Island")]
         RotumaIsland = 460,
 
         [EnumMember]
@@ -3623,6 +3985,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 57 })]
         [PrefixRegex("^Z[R-U][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("South Africa")]
         SouthAfrica = 462,
 
         [EnumMember]
@@ -3633,6 +3996,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 57 })]
         [PrefixRegex("^V5[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Namibia")]
         Namibia = 464,
 
         [EnumMember]
@@ -3643,6 +4007,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 47, 48 })]
         [PrefixRegex("^ST[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Sudan")]
         Sudan = 466,
 
         [EnumMember]
@@ -3653,6 +4018,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 57 })]
         [PrefixRegex("^3DA[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Eswatini")]
         Eswatini = 468,
 
         [EnumMember]
@@ -3663,6 +4029,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 53 })]
         [PrefixRegex("^5[HI][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Tanzania")]
         Tanzania = 470,
 
         [EnumMember]
@@ -3673,6 +4040,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 37 })]
         [PrefixRegex("^3V[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Tunisia")]
         Tunisia = 474,
 
         [EnumMember]
@@ -3683,6 +4051,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 38 })]
         [PrefixRegex("^SU[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Egypt")]
         Egypt = 478,
 
         [EnumMember]
@@ -3693,6 +4062,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 46 })]
         [PrefixRegex("^XT[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Burkina Faso")]
         BurkinaFaso = 480,
 
         [EnumMember]
@@ -3703,6 +4073,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 53 })]
         [PrefixRegex("^9[IJ][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Zambia")]
         Zambia = 482,
 
         [EnumMember]
@@ -3713,6 +4084,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 46 })]
         [PrefixRegex("^5V[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Togo")]
         Togo = 483,
 
         [EnumMember]
@@ -3723,6 +4095,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 57 })]
         [PrefixRegex("^ZS9[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Walvis Bay")]
         WalvisBay = 488,
 
         [EnumMember]
@@ -3733,6 +4106,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 56 })]
         [PrefixRegex("^3D2[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Conway Reef")]
         ConwayReef = 489,
 
         [EnumMember]
@@ -3743,6 +4117,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 65 })]
         [PrefixRegex("^T33[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Banaba")]
         Banaba = 490,
 
         [EnumMember]
@@ -3753,6 +4128,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 39 })]
         [PrefixRegex("^7O[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Yemen")]
         Yemen = 492,
 
         [EnumMember]
@@ -3763,6 +4139,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 57 })]
         [PrefixRegex("^ZS[01][A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Penguin Island")]
         PenguinIs = 493,
 
         [EnumMember]
@@ -3773,6 +4150,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^9A[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Croatia")]
         Croatia = 497,
 
         [EnumMember]
@@ -3783,6 +4161,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^S5[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Slovenia")]
         Slovenia = 499,
 
         [EnumMember]
@@ -3793,6 +4172,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^E7[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Bosnia Herzegovina")]
         BosniaHerzegovina = 501,
 
         [EnumMember]
@@ -3803,6 +4183,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^Z3[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("North Macedonia")]
         NorthMacedonia = 502,
 
         [EnumMember]
@@ -3813,6 +4194,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^O[KL][A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Czech Republic")]
         CzechRepublic = 503,
 
         [EnumMember]
@@ -3823,6 +4205,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^OM[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Slovakia")]
         Slovakia = 504,
 
         [EnumMember]
@@ -3833,6 +4216,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 44 })]
         [PrefixRegex("^BV9P[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Pratas Island")]
         PratasIsland = 505,
 
         [EnumMember]
@@ -3843,6 +4227,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 50 })]
         [PrefixRegex("^BS7[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Scarborough Shoal")]
         ScarboroughShoal = 506,
 
         [EnumMember]
@@ -3853,6 +4238,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 51 })]
         [PrefixRegex("^H40[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Temotu Province")]
         TemotuProvince = 507,
 
         [EnumMember]
@@ -3863,6 +4249,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 63 })]
         [PrefixRegex("^(FO|TO)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Austral Islands")]
         AustralIslands = 508,
 
         [EnumMember]
@@ -3873,6 +4260,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 63 })]
         [PrefixRegex("^(FO|TX)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Marquesas Islands")]
         MarquesasIslands = 509,
 
         [EnumMember]
@@ -3883,6 +4271,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 39 })]
         [PrefixRegex("^E4[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Palestine")]
         Palestine = 510,
 
         [EnumMember]
@@ -3893,6 +4282,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 54 })]
         [PrefixRegex("^4W[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Timor Leste")]
         TimorLeste = 511,
 
         [EnumMember]
@@ -3903,6 +4293,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 56 })]
         [PrefixRegex("^(FK|TX)[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Chesterfield Islands")]
         ChesterfieldIslands = 512,
 
         [EnumMember]
@@ -3913,6 +4304,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 63 })]
         [PrefixRegex("^VP6[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Ducie Island")]
         DucieIsland = 513,
 
         [EnumMember]
@@ -3923,6 +4315,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^4O[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Montenegro")]
         Montenegro = 514,
 
         [EnumMember]
@@ -3933,6 +4326,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 62 })]
         [PrefixRegex("^KH8[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Swains Island")]
         SwainsIsland = 515,
 
         [EnumMember]
@@ -3943,6 +4337,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^(FJ|TO)[A-Z0-9/]*$")]
         [OutgoingQSLService(true)]
+        [FriendlyName("Saint Barthélemy")]
         SaintBarthélemy = 516,
 
         [EnumMember]
@@ -3953,6 +4348,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^PJ2[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Curaçao")]
         Curaçao = 517,
 
         [EnumMember]
@@ -3963,6 +4359,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^PJ7[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Sint Maarten")]
         SintMaarten = 518,
 
         [EnumMember]
@@ -3973,6 +4370,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^PJ[56][A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Saba and Sint Eustatius")]
         SabaandSintEustatius = 519,
 
         [EnumMember]
@@ -3983,6 +4381,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 11 })]
         [PrefixRegex("^PJ4[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Bonaire")]
         Bonaire = 520,
 
         [EnumMember]
@@ -3993,6 +4392,7 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 48 })]
         [PrefixRegex("^Z8[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("South Sudan")]
         SouthSudan = 521,
 
         [EnumMember]
@@ -4003,9 +4403,10 @@ namespace CallsignToolkit.Utilities
         [ITUZones(new[] { 28 })]
         [PrefixRegex("^Z6[A-Z0-9/]*$")]
         [OutgoingQSLService(false)]
+        [FriendlyName("Kosovo")]
         Kosovo = 522
     }
-
+    
     public class ContinentNameAttribute : Attribute
     {
         public string ContinentName;
@@ -4060,4 +4461,23 @@ namespace CallsignToolkit.Utilities
         public OutgoingQSLServiceAttribute(bool outgoingQSLService) { OutgoingQSLService = outgoingQSLService; }
     }
 
+    public class FriendlyNameAttribute : Attribute
+    {
+        public string FriendlyName;
+
+        public FriendlyNameAttribute(string friendlyName)
+        {
+            FriendlyName = friendlyName;
+        }
+    }
+
+    public static class EnumExtensions
+    {
+        public static TAttribute GetCustomAttribute<TAttribute>(this Enum value) where TAttribute : Attribute
+        {
+            Type type = value.GetType();
+            string? name = Enum.GetName(type, value);
+            return type.GetField(name).GetCustomAttribute<TAttribute>(false);
+        }
+    }
 }

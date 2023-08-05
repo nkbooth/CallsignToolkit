@@ -5,13 +5,9 @@ namespace CallsignToolkit.CallbookLookup.QRZ
     public class QRZLocators : Locators
     {
 
-        public string FIPSCode { get { return fipsCode ?? string.Empty; } set { fipsCode = value; } }
-        public string TeleAreaCode { get { return teleAreaCode ?? string.Empty; } set { teleAreaCode = value; } }
-        public string IOTA { get { return iota ?? string.Empty; } set { iota = value; } }
+        public string FIPSCode { get; set; } = string.Empty;
 
-
-        private string? fipsCode;
-        private string? teleAreaCode;
-        private string? iota;
+        public string TeleAreaCode { get; set; } = string.Empty;
+        public string IOTA { get; set; } = string.Empty;
     }
 }

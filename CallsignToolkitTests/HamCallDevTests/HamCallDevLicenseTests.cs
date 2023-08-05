@@ -1,5 +1,6 @@
 ﻿using CallsignToolkitTests.IBaseTests;
 using CallsignToolkit.CallbookLookup.HamCallDev;
+using CallsignToolkit.Utilities;
 
 namespace CallsignToolkitTests.HamCallDevTests
 {

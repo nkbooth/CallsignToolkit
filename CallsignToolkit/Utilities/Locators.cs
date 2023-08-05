@@ -7,8 +7,8 @@ namespace CallsignToolkit.Utilities
     public class Locators
     {
         public LatLong GeoCoordinates;
-        public string? GridSquare;
-        public DXInfomration DXInformation;
+        public string GridSquare = string.Empty;
+        public DXInformation DXInformation = new();
 
         public static async Task<LatLong> GetLatLong(Address? address)
         {
