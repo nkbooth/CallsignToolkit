@@ -4,6 +4,17 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Title>Callsign Toolkit</Title>
+    <Authors>Nick Booth (N1CCK)</Authors>
+    <Description>Callsign Toolkit for programs relating to the Amateur Radio service.</Description>
+    <Copyright>2023 Nick Booth N1CCK</Copyright>
+    <PackageProjectUrl>https://github.com/nkbooth/CallsignToolkit</PackageProjectUrl>
+    <PackageLicenseUrl>https://opensource.org/license/rpl-1-5/</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/nkbooth/CallsignToolkit</RepositoryUrl>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Company>N1CCK</Company>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>

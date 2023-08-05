@@ -4,10 +4,7 @@
     {
         public virtual string FirstName
         {
-            get
-            {
-                return firstName ?? FullName;
-            }
+            get => firstName;
             set
             {
                 if (!string.IsNullOrEmpty(fullName) || fullName == "")
@@ -23,10 +20,7 @@
         }
         public virtual string LastName
         {
-            get
-            {
-                return lastName ?? string.Empty;
-            }
+            get => lastName;
             set
             {
                 if (!string.IsNullOrEmpty(fullName))
@@ -84,9 +78,13 @@
 
         }
 
+        // ReSharper disable once InconsistentNaming
         protected string fullName = string.Empty;
+        // ReSharper disable once InconsistentNaming
         protected string firstName = string.Empty;
+        // ReSharper disable once InconsistentNaming
         protected string lastName = string.Empty;
+        // ReSharper disable once InconsistentNaming
         protected string middleInitial = string.Empty;
 
 
@@ -99,15 +97,15 @@
 
         public static Name SeperateMiddleInitialFromFirstName(Name startingName)
         {
-            if (string.IsNullOrEmpty(startingName.MiddleInitial))
-            {
-                string[] firstNameParts = startingName.FirstName.Split(' ');
-                if(firstNameParts.Last().Length == 1)
-                {
-                    startingName.MiddleInitial = firstNameParts.Last();
-                    startingName.FirstName = string.Join(" ", firstNameParts.Take(firstNameParts.Length - 1));
-                }
-            }
+            if (!string.IsNullOrEmpty(startingName.MiddleInitial)) return startingName;
+            
+            string[] firstNameParts = startingName.FirstName.Split(' ');
+            
+            if (firstNameParts.Last().Length != 1) return startingName;
+            
+            startingName.MiddleInitial = firstNameParts.Last();
+            startingName.FirstName = string.Join(" ", firstNameParts.Take(firstNameParts.Length - 1));
+            
             return startingName;
         }
     }

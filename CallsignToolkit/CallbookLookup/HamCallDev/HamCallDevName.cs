@@ -40,9 +40,6 @@ namespace CallsignToolkit.CallbookLookup.HamCallDev
             }
         }
         public override string FirstName { get => firstName; set => firstName = value; }
-        // public string MiddleInitial { get => middleInitial; set => middleInitial = value; }
         public override string LastName { get => lastName; set => lastName = value; }
-
-        // protected string middleInitial = string.Empty;
     }
 }

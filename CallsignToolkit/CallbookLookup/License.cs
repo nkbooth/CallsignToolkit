@@ -11,8 +11,8 @@ namespace CallsignToolkit.CallbookLookup
     {
         public string Callsign
         {
-            get { return callsign ?? string.Empty; }
-            set { callsign = value; }
+            get => callsign ?? string.Empty;
+            set => callsign = value;
         }
         
         public string? LicenseClass
@@ -55,13 +55,13 @@ namespace CallsignToolkit.CallbookLookup
                     default: return licenseClass ?? string.Empty;
                 }
             }
-            set { licenseClass = value; }
+            set => licenseClass = value;
         }
 
         private string? callsign;
         private string? licenseClass;
 
-        public static readonly string[] USCallFilterRules = 
+        private static readonly string[] USCallFilterRules = 
         {
             "(?:[KNW][0-9][A-Z]{3})",
             "(?:[KW][A-Z][0-9][A-Z]{3})",

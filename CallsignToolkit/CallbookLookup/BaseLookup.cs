@@ -7,51 +7,18 @@ namespace CallsignToolkit.CallbookLookup
 {
     public class BaseLookup : IDisposable, ICallbook
     {
-        public virtual License License
-        {
-            get
-            {
-                return license;
-            }
-            set
-            {
-                license = value;
-            }
-        }
-        private License license = new();
+        public virtual License License { get; protected set; } = new();
 
-        [ResetOnClear(true)]
-        public virtual Name AmateurName
-        {
-            get
-            {
-                return amateurName;
-            }
-            set
-            {
-                amateurName = value;
-            }
-        }
-        private Name amateurName = new();
+        [ResetOnClear()]
+        public virtual Name AmateurName { get; set; } = new();
 
-        [ResetOnClear(true)]
-        public virtual Address? Address
-        {
-            get
-            {
-                return address;
-            }
-            set
-            {
-                address = value;
-            }
-        }
-        private Address address = new();
+        [ResetOnClear()]
+        public virtual Address? Address { get; protected set; } = new();
 
-        [ResetOnClear(true)]
+        [ResetOnClear()]
         public virtual Locators? Locators { get; set; }
         
-        private RestClient api = new();
+        private readonly RestClient api = new();
         private bool disposedValue;
 
         public BaseLookup() { }
@@ -67,13 +34,13 @@ namespace CallsignToolkit.CallbookLookup
                 this.License = new License();
             }
             
-            var fields = this.GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).ToArray().Where(f => f != null && f.GetCustomAttribute<ResetOnClearAttribute>()?.ResetOnClear == true);                         
-            foreach (FieldInfo field in fields.Where(f => f != null && f.GetCustomAttribute<ResetOnClearAttribute>()?.ResetOnClear == true))
+            IEnumerable<FieldInfo> fields = this.GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).ToArray().Where(f => f.GetCustomAttribute<ResetOnClearAttribute>()?.ResetOnClear == true);                         
+            foreach (FieldInfo field in fields.Where(f => f.GetCustomAttribute<ResetOnClearAttribute>()?.ResetOnClear == true))
             {
                 field.SetValue(this, null);
             }            
 
-            var properties = this.GetType().GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).ToArray().Where(p => p != null && p.GetCustomAttribute<ResetOnClearAttribute>()?.ResetOnClear == true);
+            IEnumerable<PropertyInfo> properties = this.GetType().GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).ToArray().Where(p => p.GetCustomAttribute<ResetOnClearAttribute>()?.ResetOnClear == true);
             foreach (PropertyInfo property in properties)
             {
                 property.SetValue(this, null);
@@ -89,14 +56,12 @@ namespace CallsignToolkit.CallbookLookup
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposedValue)
+            if (disposedValue) return;
+            if (disposing)
             {
-                if (disposing)
-                {
-                }
-                api.Dispose();
-                disposedValue = true;
             }
+            api.Dispose();
+            disposedValue = true;
         }
 
         public void Dispose()

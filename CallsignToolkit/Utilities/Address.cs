@@ -1,55 +1,56 @@
-﻿using RestSharp;
-using System.Text;
-
-namespace CallsignToolkit.Utilities
+﻿namespace CallsignToolkit.Utilities
 {
     public class Address : IDisposable
     {
-        [AddressOrderAttribute(10)]
+        [AddressOrder(10)]
         public string Address1
         {
             get
             {
                 if (!string.IsNullOrEmpty(poBoxNumber))
                 {
-                    if (string.IsNullOrEmpty(address1))
-                    {
-                        return string.Format("PO Box {0}", poBoxNumber);
-                    }
-                    else
-                    {
-                        return string.Format("PO Box {0}, {1}", poBoxNumber, address1);
-                    }
+                    return string.IsNullOrEmpty(address1) ? $"PO Box {poBoxNumber}" : $"PO Box {poBoxNumber}, {address1}";
                 }
                 else
                 {
                     return address1 ?? string.Empty;
                 }
             }
-            set { address1 = value; }
+            set => address1 = value;
         }
-        [AddressOrderAttribute(20)]
-        public string Address2 { get { return address2 ?? string.Empty; } set { address2 = value; } }
-        [AddressOrderAttribute(30)]
-        public string POBoxNumber { get { return poBoxNumber ?? string.Empty; } set { poBoxNumber = value ?? string.Empty; } }
-        [AddressOrderAttribute(40)]
-        public string City { get { return city ?? string.Empty; } set { city = value; } }
-        [AddressOrderAttribute(50)]
-        public string State { get { return state ?? string.Empty; } set { state = value; } }
-        [AddressOrderAttribute(60)]
-        public string PostalCode { get { return postalCode ?? string.Empty; } set { postalCode = value; } }
+        [AddressOrder(20)]
+        public string Address2 { get => address2 ?? string.Empty;
+            set => address2 = value;
+        }
+        [AddressOrder(30)]
+        public string POBoxNumber { get => poBoxNumber;
+            set => poBoxNumber = value ?? string.Empty;
+        }
+        [AddressOrder(40)]
+        public string City { get => city ?? string.Empty;
+            set => city = value;
+        }
+        [AddressOrder(50)]
+        public string State { get => state ?? string.Empty;
+            set => state = value;
+        }
+        [AddressOrder(60)]
+        public string PostalCode { get => postalCode ?? string.Empty;
+            set => postalCode = value;
+        }
 
 
-        protected string? address1;
-        protected string? address2;
-        protected string? poBoxNumber;
-        protected string? city;
-        protected string? state;
-        protected string? postalCode;
+        private string? address1;
+        private string? address2;
+        private string? poBoxNumber;
+        private string? city;
+        private string? state;
+        private string? postalCode;
         private bool disposedValue;
 
         public Address() { }
-        public Address(string addr1, string addr2, string city, string state, string zipCode)
+
+        protected Address(string addr1, string addr2, string city, string state, string zipCode)
         {
             this.Address1 = addr1;
             this.Address2 = addr2;
@@ -64,7 +65,8 @@ namespace CallsignToolkit.Utilities
             this.State = state;
             this.PostalCode = zipCode;
         }
-        public Address(string addr1, string addr2, string poBoxNum, string city, string state, string zipCode)
+
+        protected Address(string addr1, string addr2, string poBoxNum, string city, string state, string zipCode)
         {
             this.Address1 = addr1;
             this.Address2 = addr2;
@@ -76,28 +78,22 @@ namespace CallsignToolkit.Utilities
 
         public static Address SanitizePostCode(Address addr)
         {
-            if (!string.IsNullOrEmpty(addr.postalCode))
-            {
-                addr.postalCode.Replace("-", "");
-                if (addr.postalCode.All(c => c >= '0' && c <= '9'))
-                {
-                    if(addr.postalCode.Length > 5)
-                        addr.postalCode = addr.postalCode.Insert(5, "-");
-                }
-            }
+            if (string.IsNullOrEmpty(addr.postalCode)) return addr;
+            addr.postalCode.Replace("-", "");
+            if (!addr.postalCode.All(c => c is >= '0' and <= '9')) return addr;
+            if(addr.postalCode.Length > 5)
+                addr.postalCode = addr.postalCode.Insert(5, "-");
             return addr;
         }
         
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposedValue)
+            if (disposedValue) return;
+            if (disposing)
             {
-                if (disposing)
-                {
                     
-                }
-                disposedValue = true;
             }
+            disposedValue = true;
         }
 
         public void Dispose()

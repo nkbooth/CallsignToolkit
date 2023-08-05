@@ -2,7 +2,23 @@
 *A collection of tools for amateur radio operators to look up and display calsign and callbook return information in a standardized manner*
 
 ## Basic usage
-**Option 1**:
+**Option 1**
+```csharp
+using CallsignToolkit;
+BaseLookup lookup = new HamCallDevLookup("w1aw");
+lookup.PerformLookup();
+Console.WriteLine(lookup.Serialize()); 
+```
+
+**Option 2**:
+```csharp
+using CallsignToolkit;
+BaseLookup lookup = new HamCallDevLookup();
+(HamCallDevLookup)lookup.PerformLookup("w1aw");
+Console.WriteLine(lookup.Serialize()); 
+```
+
+**Option 3**:
 ```csharp
 using CallsignToolkit;
 HamCallDevLookup lookup = new("w1aw");
@@ -10,7 +26,7 @@ lookup.PerformLookup();
 Console.WriteLine(lookup.Serialize());
 ```
 
-**Option 2**:
+**Option 4**:
 ```csharp
 using CallsignToolkit;
 HamCallDevLookup lookup = new();
@@ -135,7 +151,7 @@ None yet.
 None yet.
 
 ## HamCallDevLookup : CallSignToolkit.LookupDetails
-Extends the base lookup class to provide a lookup method for the API provided by https://hamcall.dev.  This API is free and loads quickly, but provides only US based callsign lookups.
+Extends the base lookup class to provide a lookup method for the API provided by [HamCall.dev](https://hamcall.dev).  This API is free and loads quickly, but currently provides only US based callsign lookups.
 
 ### Extended properties
 #### HamCallDevLicense : CallsignToolkit.License
@@ -197,3 +213,12 @@ Not yet implemented.
 
 ## HamQTHLookup : CallSignToolkit.LookupDetails
 Not yet implemented.
+
+# Contributors
+This work is licensed under the [RPL v. 1.5](https://opensource.org/license/rpl-1-5/), and welcomes use and upstream fixes.
+
+Thank you to the following for their contributions to this project.
+## Primary Author and Maintainer
+* Nick Booth (N1CCK)
+
+## Additional Contributions

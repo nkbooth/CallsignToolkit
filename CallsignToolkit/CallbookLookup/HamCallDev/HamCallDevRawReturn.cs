@@ -26,6 +26,8 @@ namespace CallsignToolkit.CallbookLookup.HamCallDev
         public string file_number { get; set; }
         public string last_lotw { get; set; }
         public string license_key { get; set; }
-        public List<int> dmr_id { get; set; }
+        public List<int> dmr_id { get => dmrids ?? new List<int>(); set => dmrids = value; }
+
+        private List<int> dmrids;
     }
 }

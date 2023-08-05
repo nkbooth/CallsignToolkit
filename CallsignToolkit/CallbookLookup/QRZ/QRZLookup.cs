@@ -30,7 +30,7 @@ namespace CallsignToolkit.CallbookLookup.QRZ
             {
                 return qrzLicense;
             }
-            set
+            protected set
             {
                 qrzLicense = (QRZLicense)value;
             }
@@ -51,7 +51,7 @@ namespace CallsignToolkit.CallbookLookup.QRZ
             {
                 return qrzAddress;
             }
-            set
+            protected set
             {
                 qrzAddress = (QRZAddress)value;
             }
@@ -82,6 +82,16 @@ namespace CallsignToolkit.CallbookLookup.QRZ
         #region Constructors
         public QRZLookup()
         {
+            if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("QRZ_USER")))
+            {
+                throw new Exception("QRZ Username not set. Pass via string or set environment variable QRZ_USER");
+            }
+
+            if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("QRZ_PASSWORD")))
+            {
+                throw new Exception("QRZ Password not set.  Pass via string or set environment variable QRZ_PASSWORD");
+            }
+            
             this.username = Environment.GetEnvironmentVariable("QRZ_USER");
             this.password = Environment.GetEnvironmentVariable("QRZ_PASSWORD");
             this.refreshSessionKey().Wait();
