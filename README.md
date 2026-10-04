@@ -1,3 +1,5 @@
+> **Moved to Codeberg:** https://codeberg.org/alatartheblue/CallsignToolkit — this GitHub copy is archived and no longer updated.
+
 # The N1CCK Callsign Toolkit
 This is a collection of tools for working with amateur radio callsigns. I needed a toolkit, so I made one. The design theory is absolutely guided by the KISS (keep it simple, stupid) method - if there is a choice between "simple" and "fancy", I will choose simple.
 
